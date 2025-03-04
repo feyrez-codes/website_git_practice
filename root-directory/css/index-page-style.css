@@ -1,0 +1,82 @@
+/********Hover Box positioning*************/
+.HoverContainer{ /*Alignment of wood frame*/
+  background-image: url("/Users/coleman/Desktop/VS Code Practice/assets/wood frame.webp");
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: 4%;   
+  margin-left: 35%;
+}
+.Hovertext{
+  font-family: "Rubik Burned", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: x-large;
+  color: bisque;
+  margin-right: 5%;
+  margin-top: 10%;
+}
+/********Hover Box positioning*************/
+
+
+/********Eberron Map*************/
+.imgbox_rightcon{
+  height: 15%;
+  width: 100%;
+}
+.mainmap_rightcon {
+  border: 2px solid black;
+  height: 100%;
+  width: 100%;
+}
+.map_pin1, .map_pin2, .map_pin3, .map_pin4{
+  height: 120px;
+  width: 50px;
+  position: absolute;
+}
+.map_pin1{ /**Reven**/
+  left: 552px;
+  top: 724px;
+}
+.map_pin1:hover{
+  opacity: .5;
+}
+.map_pin2{ /**Sharn**/
+  left: 455px;
+  top: 750px;
+}
+.map_pin2:hover{
+  opacity: .5;
+}
+.map_pin3{ /**KF**/
+  left: 503px;
+  top: 725px;
+}
+.map_pin3:hover{
+  opacity: .5;
+}
+.map_pin4{ /**Dragonroost**/
+  left: 626px;
+  top: 709px;
+}
+.map_pin4:hover{
+  opacity: .5;
+}
+/********Eberron Map*************/
+
+/********Summary Box*************/
+.summbox
+{
+  width: 95%;
+  height: auto;
+  border: 2px solid chocolate;
+  background-color: bisque;
+  margin-left: 2%;
+}
+.summhead  
+{
+  font-size: small;
+}
+/********Summary Box*************/

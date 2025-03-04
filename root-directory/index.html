@@ -1,0 +1,90 @@
+<!doctype html>
+
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--Font Links--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Burned&display=swap" rel="stylesheet">
+
+
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--Header--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
+<html class="webpage">
+  <h1 class="header1">
+    <title> Welcome to Eberron! </title> 
+<!--header button desclarations: html button-->
+    <button class="H_rsrce_btn" role="button" onclick="window.open('https://www.freecodecamp.org/news/html-crash-course/','_blank')">
+    Press me for HTML help!</button>
+<!--header button desclarations: css button-->
+    <button class="CS_rsrce_btn" role="button" onclick="window.open('https://www.fullstackfoundations.com/blog/css-crash-course','_blank')">
+    Press me for CSS help!</button>
+<!--stylesheets-->
+<style></style>
+  <link rel="stylesheet" href="root-directory/css/global-page-style.css">
+  <link rel="stylesheet" href="root-directory/css/index-page-style.css">
+  </h1>
+
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--Body--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
+  <Body>
+    <div class="maincon"> 
+
+      <div class="leftcon">
+        <a href="root-directory/index.html">
+          <li>Main Page</li>
+          </a>
+          <a href="/Users/coleman/Desktop/VS Code Practice/Loot Generator/Loot Generator.html">
+          <li>Loot Generator</li>
+          </a>
+          <a href="/Users/coleman/Desktop/VS Code Practice/Monster Maker.html">
+          <li>Monster Maker</li>
+          </a>
+          <a href="">
+          <li>Map of Eberron</li>
+          </a>
+      </div>
+    
+      <div class="rightcon"> 
+        <h1>Welcome to Eberron!</h1>
+
+        <!--eberron map container-->
+        <div class="imgbox_rightcon">
+          <img class="mainmap_rightcon" src="/Users/coleman/Desktop/VS Code Practice/assets/EberronMP.webp">
+          
+          <!--map pins config-->         
+          <a id="Reven_button"> <!--Reven-->
+          <img class="map_pin1" src="/Users/coleman/Desktop/VS Code Practice/assets/map_pin2.png"> 
+          </a>
+          <a id="Sharn_button"> <!--Sharn-->
+          <img class="map_pin2" src="/Users/coleman/Desktop/VS Code Practice/assets/map_pin2.png">
+          </a>
+          <a id="KF_button"> <!--Kings Forest-->
+          <img class="map_pin3" src="/Users/coleman/Desktop/VS Code Practice/assets/map_pin2.png">
+          </a>
+          <a id="Dragonroost_button"> <!--Dragonroost-->
+          <img class="map_pin4" src="/Users/coleman/Desktop/VS Code Practice/assets/map_pin2.png">
+          </a>                
+        </div>
+        <!--eberron map container-->
+
+        <!--hover container-->
+        <div class="HoverContainer">
+        <p id="Hovertext" class="Hovertext">Select a Location</p>
+        </div>
+        <!--hover container-->
+
+        <!--summary container-->
+        <div class="summbox">
+          <h1 class="summhead" id="Summarytag"><var>Summary of Location,</var></h1>
+          <p class="summdesc" id="summ_def_text">Select a location to view our party's story so far!</p>
+        </div>
+        <!--summary container-->
+      </div>
+    </div>
+  <!---JS-->
+    <script src="/Users/coleman/Desktop/VS Code Practice/Main Page/javascript_code.js"></script>
+  <!---JS-->
+  </Body>
+
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--Footer--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
+  <footer>
+  Stay tuned for more!
+  </footer>
+</html>
