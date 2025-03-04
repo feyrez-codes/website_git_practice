@@ -1,6 +1,6 @@
 /*****************Page Design*************************/
 .webpage{ /*page background style*/
-  background-image: url("/Users/coleman/Desktop/VS Code Practice/assets/fantasymap.jpg");
+  background-image: url("/Users/coleman/Desktop/dnd-website-project-v1/root-directory/images/fantasymap.jpg");
 }
 
 /*****************Header Label*************************/
@@ -141,7 +141,7 @@
 .treasureChestContainer{ /*sec2 treasure chest container*/
   width: 98%;
   height: 350px;
-  background-image: url("/Users/coleman/Desktop/VS Code Practice/assets/open treasure chest base.png");
+  background-image: url("/Users/coleman/Desktop/dnd-website-project-v1/root-directory/images/open treasure chest base.png");
   background-size: contain;
   justify-content: space-evenly;
   align-items: center;

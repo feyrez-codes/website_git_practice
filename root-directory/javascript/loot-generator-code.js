@@ -230,7 +230,7 @@ const lootbagVal1js = document.getElementById("lootbagVal1");
 const lootbagName2js = document.getElementById("lootbagName2");
 const lootbagDesc2js = document.getElementById("lootbagDesc2");
 const lootbagVal2js = document.getElementById("lootbagVal2");
-
+/*
 async function callJSONLootTable(){
 try{
   const JSONtableResponse = await fetch('/Users/coleman/Desktop/VS Code Practice/Loot Generator/Loot Table.json');
@@ -248,3 +248,4 @@ console.error(error.message)
 function generateLootTable(lootmodifier, lootStatModifierBonus) {
   callJSONLootTable()
 }
+*/
