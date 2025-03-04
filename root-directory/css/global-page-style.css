@@ -1,22 +1,18 @@
-/*****************Page Design*************************/
-.webpage{ /*page background style*/
-  background-image: url("/Users/coleman/Desktop/VS Code Practice/assets/fantasymap.jpg");
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--background--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+html{
+  background-image: url("/Users/coleman/Desktop/dnd-website-project-v1/root-directory/images/fantasymap.jpg");
 }
-/*****************Page Design*************************/
 
-
-/*****************Header Label*************************/
-.header1{ /*buttons in header style*/
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--header--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+/**header buttons**/
+.header1{
   margin: auto;
   width: 50%;
   padding: 10px;     
   display: flex;       
 }
-/*****************Header Label*************************/
-
-
-/*****************Top of Page Button Styling*************************/
-.H_rsrce_btn, .CS_rsrce_btn{ /**Both buttons, no color edits**/
+/**top of page button styling**/
+.H_rsrce_btn, .CS_rsrce_btn{ 
   border-radius: 8px;
   border-style: none;
   box-sizing: border-box;
@@ -38,28 +34,29 @@
   -webkit-user-select: none;
   touch-action: manipulation;
 }
-.H_rsrce_btn{ /*HTML button color*/
+.H_rsrce_btn{ 
   background-color: burlywood;
 }
-.CS_rsrce_btn{ /*CSS button color*/
+.CS_rsrce_btn{ 
   background-color: chocolate;
 }
-/*****************Top of Page Button Styling*************************/
 
-
-/*****************Body and Index editing*************************/
-.maincon{  /*main text body of site*/
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--body--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+/*body design*/
+.maincon{ 
   padding: 10px;
   display: flex;
 }
-.leftcon{  /*left index*/
+/*left index*/
+.leftcon{
   width: 10%;
   height: 500px;
   border: 2px solid chocolate;
   padding: 10px;
   background-color: beige;
 }
-.rightcon{  /*main text body of site*/
+/*right interactible*/
+.rightcon{ 
   width: 80%;
   height: 5000px;
   margin-left: 2%;

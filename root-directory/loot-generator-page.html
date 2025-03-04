@@ -1,0 +1,183 @@
+<!doctype html>
+
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--Header--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
+<html>
+  <h1 class="header1">
+    <title>Fey's Bottomless Loot Box</title> 
+<!--HTML button-->
+    <button class="H_rsrce_btn" role="button" onclick="window.open('https://www.freecodecamp.org/news/html-crash-course/','_blank')">
+    Press me for HTML help!</button>
+<!--CSS button-->
+    <button class="CS_rsrce_btn" role="button" onclick="window.open('https://www.fullstackfoundations.com/blog/css-crash-course','_blank')">
+    Press me for CSS help!</button>
+<!--stylesheet-->
+    <link rel="stylesheet" href="/Users/coleman/Desktop/dnd-website-project-v1/root-directory/css/loot-generator-style.css">
+<!--javascript-->
+    <script src="/Users/coleman/Desktop/VS Code Practice/Loot Generator/Loot Generator.js" async></script>
+  </h1>
+
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--Body--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
+  <Body>
+    <div class="maincon"> <!--main page container-->
+      
+    <!---------------------------index container (left side)---------------------------------->
+      <div class="leftcon"> <!--index cont-->
+        <ol> <!--index list-->
+        <a href="/Users/coleman/Desktop/dnd-website-project-v1/root-directory/index.html">
+          <li>Main Page</li>
+          </a>
+          <a href="/Users/coleman/Desktop/dnd-website-project-v1/root-directory/loot-generator-page.html">
+          <li>Loot Generator</li>
+          </a>
+          <a href="/Users/coleman/Desktop/dnd-website-project-v1/root-directory/monster-maker-page.html">
+          <li>Monster Maker</li>
+          </a>
+          <a href="">
+          <li>Map of Eberron</li>
+          </a>
+        </ol>
+      </div>
+
+    <!---------------------------interaction container (right side)---------------------------------->
+      <div class="rightcon"> 
+
+    <!---------------------------Loot Location Button container---------------------------------->
+        <div class="rightcontop">
+          <div id="lootLocationSelector_H" class="lootLocationSelector_H">
+            <p>Step I: What are we looting?</p>
+          </div>
+          <div id="lootLocationSelector" class="lootLocationSelector">
+            <div id="lootLocationSelector_Options" class="lootLocationSelector_Options">
+            <!--Humanoid Loot-->
+              <div class="lctnSelector_Hmn_Con" id="lctnSelector_Hmn_Con">
+                <p class="lctnSelector_Hmn_H" id="lctnSelector_Hmn_H">Humanoid</p>
+                <a class="lctnSelector_Hmn_a" id="lctnSelector_Hmn_a">
+                  <img class="lctnSelector_Hmn" id="lctnSelector_Hmn" src="/Users/coleman/Desktop/dnd-website-project-v1/root-directory/images/px_humanoid.png">
+                </a>
+                <img class="lctnSelector_Hmn_Hover" id="lctnSelector_Hmn_Hover" src="/Users/coleman/Desktop/dnd-website-project-v1/root-directory/images/px_hand.png">
+              </div>
+            <!--Monster Loot-->
+              <div class="lctnSelector_Mnstr_Con" id="lctnSelector_Mnstr_Con">
+                <p class="lctnSelector_Mnstr_H" id="lctnSelector_Mnstr_H">Dead Monster</p>
+                <a class="lctnSelector_Mnstr_a" id="lctnSelector_Mnstr_a">
+                  <img class="lctnSelector_Mnstr" id="lctnSelector_Mnstr" src="/Users/coleman/Desktop/dnd-website-project-v1/root-directory/images/px_monster.png">
+                </a>
+                <img class="lctnSelector_Mnstr_Hover" id="lctnSelector_Mnstr_Hover" src="/Users/coleman/Desktop/dnd-website-project-v1/root-directory/images/px_hand.png">
+              </div>
+            <!--Chest Loot-->
+              <div class="lctnSelector_Chst_Con" id="lctnSelector_Chst_Con">
+                <p class="lctnSelector_Chst_H" id="lctnSelector_Chst_H">Chest</p>
+                <a class="lctnSelector_Chst_a" id="lctnSelector_Chst_a">
+                  <img class="lctnSelector_Chst" id="lctnSelector_Chst" src="/Users/coleman/Desktop/dnd-website-project-v1/root-directory/images/px_chest.png">
+                </a>
+                <img class="lctnSelector_Chst_Hover" id="lctnSelector_Chst_Hover" src="/Users/coleman/Desktop/dnd-website-project-v1/root-directory/images/px_hand.png">
+              </div>
+            <!--Furniture Loot-->
+              <div class="lctnSelector_Frntr_Con" id="lctnSelector_Frntr_Con">
+                <p class="lctnSelector_Frntr_H" id="lctnSelector_Frntr_H">Furniture</p>
+                <a class="lctnSelector_Frntr_a" id="lctnSelector_Frntr_a">
+                  <img class="lctnSelector_Frntr" id="lctnSelector_Frntr" src="/Users/coleman/Desktop/dnd-website-project-v1/root-directory/images/px_furniture.png">
+                </a>
+                <img class="lctnSelector_Frntr_Hover" id="lctnSelector_Frntr_Hover" src="/Users/coleman/Desktop/dnd-website-project-v1/root-directory/images/px_hand.png">
+              </div>
+            <!--Gravestone Loot-->
+              <div class="lctnSelector_Grv_Con" id="lctnSelector_Grv_Con">
+                <p class="lctnSelector_Grv_H" id="lctnSelector_Grv_H">Grave</p>
+                <a class="lctnSelector_Grv_a" id="lctnSelector_Grv_a">
+                  <img class="lctnSelector_Grv" id="lctnSelector_Grv" src="/Users/coleman/Desktop/dnd-website-project-v1/root-directory/images/px_gravestone.png">
+                </a>
+                <img class="lctnSelector_Grv_Hover" id="lctnSelector_Grv_Hover" src="/Users/coleman/Desktop/dnd-website-project-v1/root-directory/images/px_hand.png">
+              </div>
+            <!--Pantry Loot-->
+              <div class="lctnSelector_Food_Con" id="lctnSelector_Food_Con"> 
+                <p class="lctnSelector_Food_H" id="lctnSelector_Food_H">Pantry</p>
+                <a class="lctnSelector_Food_a" id="lctnSelector_Food_a">
+                  <img class="lctnSelector_Food" id="lctnSelector_Food" src="/Users/coleman/Desktop/dnd-website-project-v1/root-directory/images/px_food.png">
+                </a>
+                <img class="lctnSelector_Food_Hover" id="lctnSelector_Food_Hover" src="/Users/coleman/Desktop/dnd-website-project-v1/root-directory/images/px_hand.png">
+              </div>
+            </div>
+          </div>
+          <div id="lootLocationSelector_F" class="lootLocationSelector_F">
+            <p>Click the image that best describes your loot location</p>
+          </div>
+        </div>
+   <!--------------------------Right Data Entry Panel-------------------------------->
+        <div class="rightconbody">
+          <p class="rightConBody_H">Step II: Craft a custom Loot Roll!</p>
+          <div id="treasureChestContainer" class="treasureChestContainer">
+
+        <!--------------------------Left Loot Generate widg-------------------------------->
+            <div class="d20ValueCon" id="d20ValueCon" disabled>
+              <label for="d20Valueinput_1">Input your roll with any modifiers:</label>
+              <input type="text" name="d20Valueinput_1" id="d20Valueinput_1" class="d20Valueinput_1">
+              <button type="button" id="d20ValueGenerateBtn" class="d20ValueGenerateBtn">Generate Loot</button>
+            </div>
+        <!--------------------------Middle Loot Generate widg-------------------------------->
+            <div class="inputStatCon" id="inputStatCon" disabled>
+              <label for="inputStatinput_1">Nat D20 Value:</label>
+              <input type="text" name="inputStatinput_1" id="inputStatinput_1">
+              <label for="inputStatBonus_1">What is your PERCEPTION bonus?</label>
+              <select name="inputStatBonus_1" id="inputStatBonus_1" class="inputStatBonus_1">
+              </select>
+              <label for="inputStatBonus_2">What is your INVESTIGATION bonus?</label>
+              <select name="inputStatBonus_2" id="inputStatBonus_2" class="inputStatBonus_2">
+              </select>
+              <label for="inputStatBonus_3">What is your SLEIGHT OF HAND bonus?</label>
+              <select name="inputStatBonus_3" id="inputStatBonus_3" class="inputStatBonus_3">
+              </select>
+              <button type="button" id="inputStatGenerateBtn" class="inputStatGenerateBtn">Generate Loot</button>
+            </div>
+        <!--------------------------Right Loot Generate widg-------------------------------->
+            <div class="randRollCon" id="randRollCon" disabled>
+              <div class="randRollOutputCon" id="randRollOutputCon">              
+                <p class="randRollOutput" id="randRollOutput">20</p>
+                <img class="randRollOutputBackground" id="randRollOutputBackground" src="/Users/coleman/Desktop/dnd-website-project-v1/root-directory/images/d20.png">
+              </div>
+              <button type="button" id="randRollValueMakeBtn">Roll a D20</button>
+              <button type="button" id="randRollGenerateBtn">Generate Loot</button>
+            </div>
+          </div>
+      <!--------------------------Footer-buttons for Loot Generate widg-------------------------------->
+        <div id="rollerBox" class="rollerBox">
+            <button class="d20Roller" id="d20Roller">Enter your Roll</button>
+          <!---->
+            <button class="inputRoll" id="inputRoll">Enter your Stats</button>
+          <!---->
+            <button class="randRoll" id="randRoll">Roll a naked D20</button>
+          </div>
+
+    <!-------------------------------Loot Results Footer-Table Container------------------------------>
+        </div>
+        <div id="rightconfoot" class="rightconfoot">
+          <p class="rightConFoot_H">Step III: Grab the Loot and Run!</p>
+
+          <div id="lootResultsCon" class="lootResultsCon">
+            <table id="lootResultsTable" class="lootResultsTable">
+              <thead>
+                <th>Looted Item</th>
+                <th>Description</th>
+                <th>Value</th>
+              </thead>
+
+              <tbody>
+              <tr>
+                <td id="lootbagName1">item1</td>
+                <td id="lootbagDesc1">desc1</td>
+                <td id="lootbagVal1">value1</td>
+              </tr>'
+              <tr>
+                <td id="lootbagName2">item2</td>
+                <td id="lootbagDesc2">description2</td>
+                <td id="lootbagVal2">value2</td>
+              </tr>
+            </tbody>
+            
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </Body>
+</html>

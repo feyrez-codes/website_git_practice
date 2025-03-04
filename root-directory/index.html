@@ -7,7 +7,7 @@
 
 
 <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--Header--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
-<html class="webpage">
+<html class=>
   <h1 class="header1">
     <title> Welcome to Eberron! </title> 
 <!--header button desclarations: html button-->
@@ -17,38 +17,39 @@
     <button class="CS_rsrce_btn" role="button" onclick="window.open('https://www.fullstackfoundations.com/blog/css-crash-course','_blank')">
     Press me for CSS help!</button>
 <!--stylesheets-->
-<style></style>
-  <link rel="stylesheet" href="root-directory/css/global-page-style.css">
-  <link rel="stylesheet" href="root-directory/css/index-page-style.css">
+    <link rel="stylesheet" href="/Users/coleman/Desktop/dnd-website-project-v1/root-directory/css/global-page-style.css">
+    <link rel="stylesheet" href="/Users/coleman/Desktop/dnd-website-project-v1/root-directory/css/index-page-style.css">
+<!--javascript-->
+    <script src="/Users/coleman/Desktop/dnd-website-project-v1/root-directory/javascript/index-code.js" async></script>
   </h1>
 
 <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--Body--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
   <Body>
     <div class="maincon"> 
 
+<!--lefthand index list-->
       <div class="leftcon">
-        <a href="root-directory/index.html">
-          <li>Main Page</li>
-          </a>
+        <ol>
+          <a href="/Users/coleman/Desktop/dnd-website-project-v1/root-directory/index.html">
+          <li>Main Page</li></a>
           <a href="/Users/coleman/Desktop/VS Code Practice/Loot Generator/Loot Generator.html">
-          <li>Loot Generator</li>
-          </a>
+          <li>Loot Generator</li></a>
           <a href="/Users/coleman/Desktop/VS Code Practice/Monster Maker.html">
-          <li>Monster Maker</li>
-          </a>
+          <li>Monster Maker</li></a>
           <a href="">
-          <li>Map of Eberron</li>
-          </a>
+          <li>Map of Eberron</li></a>
+        </ol>
       </div>
-    
+
+<!--main page interactible body-->
       <div class="rightcon"> 
         <h1>Welcome to Eberron!</h1>
 
-        <!--eberron map container-->
+<!--eberron map container-->
         <div class="imgbox_rightcon">
           <img class="mainmap_rightcon" src="/Users/coleman/Desktop/VS Code Practice/assets/EberronMP.webp">
           
-          <!--map pins config-->         
+<!--map pins config-->         
           <a id="Reven_button"> <!--Reven-->
           <img class="map_pin1" src="/Users/coleman/Desktop/VS Code Practice/assets/map_pin2.png"> 
           </a>
@@ -62,25 +63,19 @@
           <img class="map_pin4" src="/Users/coleman/Desktop/VS Code Practice/assets/map_pin2.png">
           </a>                
         </div>
-        <!--eberron map container-->
 
-        <!--hover container-->
+<!--hover container-->
         <div class="HoverContainer">
         <p id="Hovertext" class="Hovertext">Select a Location</p>
         </div>
-        <!--hover container-->
 
-        <!--summary container-->
+<!--summary container-->
         <div class="summbox">
           <h1 class="summhead" id="Summarytag"><var>Summary of Location,</var></h1>
           <p class="summdesc" id="summ_def_text">Select a location to view our party's story so far!</p>
         </div>
-        <!--summary container-->
       </div>
     </div>
-  <!---JS-->
-    <script src="/Users/coleman/Desktop/VS Code Practice/Main Page/javascript_code.js"></script>
-  <!---JS-->
   </Body>
 
 <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--Footer--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
