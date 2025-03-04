@@ -1,0 +1,1 @@
+/Users/coleman/Desktop/dnd-website-project-v1/root-directory/json/loot-table.json
