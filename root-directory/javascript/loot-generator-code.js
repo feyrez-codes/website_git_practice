@@ -253,9 +253,10 @@ let testText = '{   "uniqueLootTable": ['+
 ']}';
 const finalLootTable = json.parse(testText);
 
-console.log(finalLootTable.uniqueLootTable[1].name);
-/*
+console.log(finalLootTable.uniqueLootTable[1].name)
+
 async function callJSONLootTable(){
+  /*
 try{
   const JSONtableResponse = await fetch('/Users/coleman/Desktop/VS Code Practice/Loot Generator/Loot Table.json');
   if (!JSONtableResponse.ok){
@@ -266,10 +267,11 @@ try{
 }
 catch{error} {
 console.error(error.message)
-}};
+}
+*/
+};
 
 
 function generateLootTable(lootmodifier, lootStatModifierBonus) {
   callJSONLootTable()
 }
-*/
