@@ -231,6 +231,30 @@ const lootbagName2js = document.getElementById("lootbagName2");
 const lootbagDesc2js = document.getElementById("lootbagDesc2");
 const lootbagVal2js = document.getElementById("lootbagVal2");
 
+
+let testText = '{   "uniqueLootTable": ['+
+    '{"name": "a human tooth"'+
+    ',"description": "where did this come from?"'+
+    ',"value": "1sp"'+ 
+    ',"ID": 1},'+
+    '{"name": "a human jawbone"'+
+    ',"description":"the flesh of this bone appears to have been stripped away"'+
+    ',"value": "1sp"'+
+    ',"ID": 2},'+
+    '{"name": "raw meat"'+
+    ',"description": "a small cut of beef?"'+
+    ',"value": "2sp"'+
+    ',"ID": 3},'+
+    '{"name": "dead mouse"'+
+    ',"description": "a small field mouse, apparently suffocated to death"'+
+    ',"value": "worthless"'+
+    ',"ID": 4}'+
+  ']'+
+']}';
+const finalLootTable = json.parse(testText);
+
+console.log(finalLootTable.uniqueLootTable[1].name);
+/*
 async function callJSONLootTable(){
 try{
   const JSONtableResponse = await fetch('/Users/coleman/Desktop/VS Code Practice/Loot Generator/Loot Table.json');
@@ -248,3 +272,4 @@ console.error(error.message)
 function generateLootTable(lootmodifier, lootStatModifierBonus) {
   callJSONLootTable()
 }
+*/
