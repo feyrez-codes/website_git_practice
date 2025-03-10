@@ -1,6 +1,6 @@
 /*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--hover box --%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
 .HoverContainer{ 
-  background-image: url("/Users/coleman/Desktop/dnd-website-project-v1/root-directory/images/wood frame.webp");
+  background-image: url("../images/wood frame.webp");
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
