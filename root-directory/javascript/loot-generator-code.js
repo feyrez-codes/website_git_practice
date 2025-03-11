@@ -223,36 +223,25 @@ randRollbtn.addEventListener("click",()=>{
 });
 
 /*************content in containers*******************/
-const lootbagName1js = document.getElementById("lootbagName1");
-const lootbagDesc1js = document.getElementById("lootbagDesc1");
-const lootbagVal1js = document.getElementById("lootbagVal1");
 
-const lootbagName2js = document.getElementById("lootbagName2");
-const lootbagDesc2js = document.getElementById("lootbagDesc2");
-const lootbagVal2js = document.getElementById("lootbagVal2");
+/**Testing Array sampling*/
+const testText = '{"uniqueLootTable": [{"name": "a human tooth","description": "where did this come from?","value": "1sp","ID": 1}]}'
 
+function finalLootTable(optionCount){
+for(let a=0; a<=optionCount; a++){
+  const table = document.getElementById('lootResultsTable');  
+  const newrow = document.createElement('tr');
+  const newrowID = newrow.value = 'row_'+a;
+  table.appendChild(newrow);
+  for(let b=0; b>3; b++){
+    const newcell = document.createElement('td');
+    newcell.id = newrowID+'_cell_'+b;
+    newrow.appendChild(newcell);
+  };
 
-let testText = '{   "uniqueLootTable": ['+
-    '{"name": "a human tooth"'+
-    ',"description": "where did this come from?"'+
-    ',"value": "1sp"'+ 
-    ',"ID": 1},'+
-    '{"name": "a human jawbone"'+
-    ',"description":"the flesh of this bone appears to have been stripped away"'+
-    ',"value": "1sp"'+
-    ',"ID": 2},'+
-    '{"name": "raw meat"'+
-    ',"description": "a small cut of beef?"'+
-    ',"value": "2sp"'+
-    ',"ID": 3},'+
-    '{"name": "dead mouse"'+
-    ',"description": "a small field mouse, apparently suffocated to death"'+
-    ',"value": "worthless"'+
-    ',"ID": 4}'+
-  ']'+
-']}';
-const finalLootTable = json.parse(testText);
+}};
 
+json.parse(testText);
 console.log(finalLootTable.uniqueLootTable[1].name)
 
 async function callJSONLootTable(){
