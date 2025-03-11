@@ -238,7 +238,7 @@ for(let a=0; a<=optionCount; a++){
     newcell.id = newrowID+'_cell_'+b;
     newrow.appendChild(newcell);
   };
-
+  callJSONLootTable()
 }};
 
 json.parse(testText);
@@ -262,5 +262,4 @@ console.error(error.message)
 
 
 function generateLootTable(lootmodifier, lootStatModifierBonus) {
-  callJSONLootTable()
 }
