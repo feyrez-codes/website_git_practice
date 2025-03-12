@@ -224,39 +224,44 @@ randRollbtn.addEventListener("click",()=>{
 
 /*************content in containers*******************/
 
+async function callJSONLootTable(){
+  try{
+    const JSONtableResponse = await fetch('/Users/coleman/Desktop/VS Code Practice/Loot Generator/Loot Table.json');
+    if (!JSONtableResponse.ok){
+      throw new Error('PROBLEM!!!!');
+    }
+    const lootOutput = Response.json()
+    console.log(lootOutput)
+  }
+  catch{error} {
+  console.error(error.message)
+  }
+};  
+
 /**Testing Array sampling*/
 const testText = '{"uniqueLootTable": [{"name": "a human tooth","description": "where did this come from?","value": "1sp","ID": 1}]}'
+const test1input = document.getElementById('testresultstotal');
+const test1button = document.getElementById('testresultsbutton');
 
-function finalLootTable(optionCount){
-for(let a=0; a<=optionCount; a++){
+test1button.addEventListener('click', ()=>{
+let x = test1input.value;
+finalLootTable(x);
+});
+
+function finalLootTable(p1) {  
+  console.log(p1);
   const table = document.getElementById('lootResultsTable');  
-  const newrow = document.createElement('tr');
-  const newrowID = newrow.value = 'row_'+a;
-  table.appendChild(newrow);
-  for(let b=0; b>3; b++){
-    const newcell = document.createElement('td');
-    newcell.id = newrowID+'_cell_'+b;
-    newrow.appendChild(newcell);
-  };
-  callJSONLootTable()
-}};
+  const newrow = table.insertRow(1); 
+  const cell1 = newrow.insertCell(0);
+  const cell2 = newrow.insertCell(1);
+  const cell3 = newrow.insertCell(2);
 
-json.parse(testText);
-console.log(finalLootTable.uniqueLootTable[1].name)
+  cell1.innerHTML = 'hi'; //testText[0][0][0];
+  cell2.innerHTML = 'hi'; //testText[0][0][1];
+  cell3.innerHTML = 'hi'; //testText[0][0][2];
+};
 
-async function callJSONLootTable(){
   /*
-try{
-  const JSONtableResponse = await fetch('/Users/coleman/Desktop/VS Code Practice/Loot Generator/Loot Table.json');
-  if (!JSONtableResponse.ok){
-    throw new Error('PROBLEM!!!!');
-  }
-  const lootOutput = Response.json()
-  console.log(lootOutput)
-}
-catch{error} {
-console.error(error.message)
-}
 */
 };
 
