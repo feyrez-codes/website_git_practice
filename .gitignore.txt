@@ -1,5 +1,7 @@
-/Users/coleman/Desktop/dnd-website-project-v1/root-directory/json/loot-table.json
+json/loot-table.json
 
-/Users/coleman/Desktop/dnd-website-project-v1/root-directory/json/deleted-json-code
+json/deleted-json-code
 
-/Users/coleman/Desktop/dnd-website-project-v1/github-recovery-codes.txt
+github-recovery-codes.txt
+
+.DS_Store
