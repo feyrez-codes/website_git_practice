@@ -1,6 +1,6 @@
 /** Global Looting Variables (adjusted by below levers)**/
 let lootLocationModifier = 0
-let lootStatModifier = 0
+let lootStatModifier = 20
 let lootStatModifierBonus = 0
 
 /********************************Location Selector Button Functions*******************/
@@ -237,6 +237,8 @@ rollBonus = Math.ceil(p2/5);
 if (lootLocationModifier === 1){
   lootTableRollPop(fullLootTable.dead_loot.length, fullLootTable.dead_loot);
   console.log(lootTableroll[0].name);
+  finalLootTable()
+  //loottableroll[x].name and .desc and .value will populate our total table
 } else if (lootLocationModifier === 2){
 
 }else if (lootLocationModifier === 3){
@@ -245,28 +247,24 @@ if (lootLocationModifier === 1){
 
 }else if (lootLocationModifier === 5){
 
-}else {};
+}else {
 
-finalLootTable(rollTotal, rollBonus);
-};
-
-function finalLootTable(p1, p2) {  
-p1 === 0 ? roll : noroll};
-
-function roll() {
-for(i=0; i<(p1+p2); i++){
-  const table = document.getElementById('lootResultsTable');  
-  const newrow = table.insertRow(1); 
-  const cell1 = newrow.insertCell(0);
-  const cell2 = newrow.insertCell(1);
-  const cell3 = newrow.insertCell(2);
-
-  cell1.innerHTML = testText[i].name; 
-  cell2.innerHTML = testText[i].description; 
-  cell3.innerHTML = testText[i].value; 
 }};
 
-function noroll(){
+function finalLootTable(){
+  console.log(`roll total = ${lootStatModifier}`)
+  if (rollTotal>0) {
+  for(i=0; i<(rollBonus+rollTotal); i++){
+    const table = document.getElementById('lootResultsTable');  
+    const newrow = table.insertRow(1); 
+    const cell1 = newrow.insertCell(0);
+    const cell2 = newrow.insertCell(1);
+    const cell3 = newrow.insertCell(2);
+  
+    cell1.innerHTML = lootTableroll[i].name; 
+    cell2.innerHTML = lootTableroll[i].description; 
+    cell3.innerHTML = lootTableroll[i].value; 
+  }} else{
   const table = document.getElementById('lootResultsTable');  
   const newrow = table.insertRow(1); 
   const cell1 = newrow.insertCell(0);
@@ -276,6 +274,8 @@ function noroll(){
   cell1.innerHTML = ""; 
   cell2.innerHTML = "you find nothing!"; 
   cell3.innerHTML = "0gp"; 
+  };
+console.log('roll table went');
 };
 
 const fullLootTable = {
