@@ -353,7 +353,7 @@ const fullLootTable = {
     ,"ID": 10},
 
     {"name":"cleaned animal bone"
-    ,"description": "seems to be a small, brittle, avian bone'"
+    ,"description": "seems to be a small, brittle, avian bone"
     ,"value": "(1sp)"
     ,"ID": 11},
 
@@ -520,7 +520,7 @@ const fullLootTable = {
     ,"ID": 5},
     
     {"name": "claw"
-    ,"description": "several inches long and sharp. yellowed from sun damage and age'"
+    ,"description": "several inches long and sharp. yellowed from sun damage and age"
     ,"value": "2sp"
     ,"ID": 5},
     
@@ -1048,27 +1048,27 @@ const fullLootTable = {
 ],
 "potion_loot":[
     {"name": "potion of Hill Giant Strength"
-    ,"description":"(consumed, 1h) set your strength to 21'" 
+    ,"description":"(consumed, 1h) set your strength to 21" 
     ,"value": "2gp"
     ,"ID": 5},
     
     {"name": "potion of Stone Giant Strength"
-    ,"description":"(consumed, 1h) set your strength to 23'" 
+    ,"description":"(consumed, 1h) set your strength to 23" 
     ,"value": "2gp"
     ,"ID": 5},
     
     {"name": "potion of Fire Giant Strength"
-    ,"description":"(consumed, 1h) set your strength to 25'" 
+    ,"description":"(consumed, 1h) set your strength to 25" 
     ,"value": "2gp"
     ,"ID": 5},
     
     {"name": "potion of Cloud Giant Strength"
-    ,"description":"(consumed, 1h) set your strength to 27'" 
+    ,"description":"(consumed, 1h) set your strength to 27" 
     ,"value": "2gp"
     ,"ID": 5},
     
     {"name": "potion of Storm Giant Strength"
-    ,"description":"(consumed, 1h) set your strength to 29'" 
+    ,"description":"(consumed, 1h) set your strength to 29" 
     ,"value": "2gp"
     ,"ID": 5},
     
@@ -1123,7 +1123,7 @@ const fullLootTable = {
     ,"ID": 5},
 
     {"name": "potion of Mind Reading"
-    ,"description":"(consumed, 1h) you gain the effect of the detect thoughts spell'"
+    ,"description":"(consumed, 1h) you gain the effect of the detect thoughts spell"
     ,"value": "1gp"
     ,"ID": 5},
     
@@ -1138,7 +1138,7 @@ const fullLootTable = {
     ,"ID": 5},
     
     {"name": "poison of Assassin's Blood"
-    ,"description":"(dipped, 1h) object applies 1d8 poison damage on hit'"
+    ,"description":"(dipped, 1h) object applies 1d8 poison damage on hit"
     ,"value": "1gp"
     ,"ID": 5},
 
@@ -1148,12 +1148,12 @@ const fullLootTable = {
     ,"ID": 5},
     
     {"name": "potion of Growth"
-    ,"description":"(consumed, 1h) gain the “enlarge” effect of the enlarge/reduce spell'"
+    ,"description":"(consumed, 1h) gain the “enlarge” effect of the enlarge/reduce spell"
     ,"value": "1gp"
     ,"ID": 5},
 
     {"name": "potion of Dimunition"
-    ,"description":"(consumed, 1h) gain the “reduce” effect of the enlarge/reduce spell'"
+    ,"description":"(consumed, 1h) gain the “reduce” effect of the enlarge/reduce spell"
     ,"value": "1gp"
     ,"ID": 5},
 
@@ -1226,17 +1226,17 @@ const fullLootTable = {
 ],
 "dead_loot":[
     {"name": "skull"
-    ,"description":"won't be needing this anymore'"
+    ,"description":"won't be needing this anymore"
     ,"value": "1sp"
     ,"ID": 5},
     
     {"name": "spare rib"
-    ,"description":"must've been painful'"
+    ,"description":"must've been painful"
     ,"value": "2sp"
     ,"ID": 5},
     
     {"name": "decaying cloak"
-    ,"description":"useless'"
+    ,"description":"useless"
     ,"value": "2sp"
     ,"ID": 5},
     
@@ -1261,12 +1261,12 @@ const fullLootTable = {
     ,"ID": 5},
     
     {"name": "severed hand"
-    ,"description":"ingredient: poison of assassin's blood (1/3)'"
+    ,"description":"ingredient: poison of assassin's blood (1/3)"
     ,"value": "2sp"
     ,"ID": 5},
     
     {"name": "loose eyeball"
-    ,"description":"ingredient: poison of assassin's blood (1/3)'"
+    ,"description":"ingredient: poison of assassin's blood (1/3)"
     ,"value": "2sp"
     ,"ID": 5},
     
@@ -1292,12 +1292,12 @@ const fullLootTable = {
 ],
 "trash_weapon": [
     {"name": "broken iron dagger"
-    ,"description":"useless'"
+    ,"description":"useless"
     ,"value": "worthless"
     ,"ID": 5},
     
     {"name": "empty leather scabbard"
-    ,"description":"marred with deep cuts'"
+    ,"description":"marred with deep cuts"
     ,"value": "worthless"
     ,"ID": 5},
     
@@ -1307,37 +1307,37 @@ const fullLootTable = {
     ,"ID": 5},
     
     {"name": "stringless bow"
-    ,"description":"sporting cracked string nocks'"
+    ,"description":"sporting cracked string nocks"
     ,"value": "worthless"
     ,"ID": 5},
     
     {"name": "blackened stick, cloth-wrapped end with oily residue"
-    ,"description":"an impromptu torch?'"
+    ,"description":"an impromptu torch?"
     ,"value": "worthless"
     ,"ID": 5},
     
     {"name": "Rock, bound with thinning twine and a braided tassle"
-    ,"description":"useless'"
+    ,"description":"useless"
     ,"value": "worthless"
     ,"ID": 5},
     
     {"name": "wooden spear, blade end snapped off"
-    ,"description":"useless'"
+    ,"description":"useless"
     ,"value": "worthless"
     ,"ID": 5},
     
     {"name": "counterfeit gnome tortoise blade"
-    ,"description":"is this...wood and tin?'"
+    ,"description":"is this...wood and tin?"
     ,"value": "worthless"
     ,"ID": 5},
     
     {"name": "counterfeit eagle's claw"
-    ,"description":"is this... a painted wooden blade?'"
+    ,"description":"is this... a painted wooden blade?"
     ,"value": "worthless"
     ,"ID": 5},
     
     {"name": "nunchaku, missing middle chain"
-    ,"description":"two sticks, morelike'"
+    ,"description":"two sticks, morelike"
     ,"value": "worthless"
     ,"ID": 5}   
 ],
@@ -1379,107 +1379,107 @@ const fullLootTable = {
 ],
 "trash_treasure": [
     {"name": "Scrap of animal hide"
-    ,"description":"useless'"
+    ,"description":"useless"
     ,"value": "worthless"
     ,"ID": 5},
     
     {"name": "Piece of rotten fruit"
-    ,"description":"ingredient: potion of Climbing (1/2)'"
+    ,"description":"ingredient: potion of Climbing (1/2)"
     ,"value": "worthless"
     ,"ID": 5},
     
     {"name": "Dried animal jerky"
-    ,"description":"useless'"
+    ,"description":"useless"
     ,"value": "worthless"
     ,"ID": 5},
     
     {"name": "defaced silver coins"
-    ,"description":"useless'"
+    ,"description":"useless"
     ,"value": "worthless"
     ,"ID": 5},
     
     {"name": "scrap of pelt"
-    ,"description":"useless'"
+    ,"description":"useless"
     ,"value": "worthless"
     ,"ID": 5},
     
     {"name": "crumpled paper"
-    ,"description":"useless'"
+    ,"description":"useless"
     ,"value": "worthless"
     ,"ID": 5},
     
     {"name": "empty envelope"
-    ,"description":"useless'"
+    ,"description":"useless"
     ,"value": "worthless"
     ,"ID": 5},
     
     {"name": "tin can"
-    ,"description":"useless'"
+    ,"description":"useless"
     ,"value": "worthless"
     ,"ID": 5},
     
     {"name": "cobwebs"
-    ,"description":"useless'"
+    ,"description":"useless"
     ,"value": "worthless"
     ,"ID": 5},
     
     {"name": "shard of wood"
-    ,"description":"useless'"
+    ,"description":"useless"
     ,"value": "worthless"
     ,"ID": 5},
     
     {"name": "broken mirror"
-    ,"description":"useless'"
+    ,"description":"useless"
     ,"value": "worthless"
     ,"ID": 5},
     
     {"name": "ripper portrait of a man"
-    ,"description":"the face seems to be clawed apart'"
+    ,"description":"the face seems to be clawed apart"
     ,"value": "worthless"
     ,"ID": 5},
     
     {"name": "ruined portrait of a man"
-    ,"description":"dark liquid spilled across face'"
+    ,"description":"dark liquid spilled across face"
     ,"value": "worthless"
     ,"ID": 5},
     
     {"name": "wood cup"
-    ,"description":"useless'"
+    ,"description":"useless"
     ,"value": "worthless"
     ,"ID": 5},
     
     {"name": "tin tankard"
-    ,"description":"useless'"
+    ,"description":"useless"
     ,"value": "worthless"
     ,"ID": 5},
     
     {"name": "empty tin canteen"
-    ,"description":"there's a hole in the bottom'"
+    ,"description":"there's a hole in the bottom"
     ,"value": "worthless"
     ,"ID": 5},
     
     {"name": "ball of yarn"
-    ,"description":"useless'"
+    ,"description":"useless"
     ,"value": "worthless"
     ,"ID": 5},
     
     {"name": "leather scrap"
-    ,"description":"useless'"
+    ,"description":"useless"
     ,"value": "worthless"
     ,"ID": 5},
     
     {"name": "chunk of iron chainmail"
-    ,"description":"useless'"
+    ,"description":"useless"
     ,"value": "worthless"
     ,"ID": 5},
     
     {"name": "iron chain"
-    ,"description":"useless'"
+    ,"description":"useless"
     ,"value": "worthless"
     ,"ID": 5},
     
     {"name": "square of fabric"
-    ,"description":"useless'"
+    ,"description":"useless"
     ,"value": "worthless"
     ,"ID": 5}
 ],
@@ -2007,17 +2007,17 @@ const fullLootTable = {
 
 "rare_armor": [
     {"name": "cat-eared graceful hat"
-    ,"description":"(req: N/A) You gain Cat's Grace and increase your Dexterity score by 2, to a maximum 20. (cloth hat}'"
+    ,"description":"(req: N/A) You gain Cat's Grace and increase your Dexterity score by 2, to a maximum 20. (cloth hat}"
     ,"value": "5sp"
     ,"ID": 5},
     
     {"name": "graceful shirt"
-    ,"description":"(req: N/A) 10AC+dex. Whenever the wearer succeeds a Saving Throw against a spell, they regain 1d6hp. (cloth shirt}'"
+    ,"description":"(req: N/A) 10AC+dex. Whenever the wearer succeeds a Saving Throw against a spell, they regain 1d6hp. (cloth shirt}"
     ,"value": "1gp"
     ,"ID": 5},
     
     {"name": "graceful gloves of the comedian"
-    ,"description":"(req: N/A) once per long rest, you may cast the spell Hideous Laughter (cloth gloves}'"
+    ,"description":"(req: N/A) once per long rest, you may cast the spell Hideous Laughter (cloth gloves}"
     ,"value": "3sp"
     ,"ID": 5},
     
@@ -2027,12 +2027,12 @@ const fullLootTable = {
     ,"ID": 5},
     
     {"name": "graceful shoes"
-    ,"description":"(req: N/A) if the wearer is standing in a water surface at the start of their turn, they heal 1d4hp (cloth shoes}'"
+    ,"description":"(req: N/A) if the wearer is standing in a water surface at the start of their turn, they heal 1d4hp (cloth shoes}"
     ,"value": "3sp"
     ,"ID": 5},
     
     {"name": "reflective graceful shawl"
-    ,"description":"(req: N/A) once per long rest, you may cast the spell Color Spray (cloth cape}'"
+    ,"description":"(req: N/A) once per long rest, you may cast the spell Color Spray (cloth cape}"
     ,"value": "3sp"
     ,"ID": 5},
     
