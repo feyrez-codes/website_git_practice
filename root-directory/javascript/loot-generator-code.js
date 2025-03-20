@@ -225,10 +225,11 @@ randRollbtn.addEventListener("click",()=>{
 /**************************Loot Table Variables: Populate and generate final loot table**************************/
 
 import{fullLootTable} from './loot-generator-table.js';
+// human loot =
 
 let tablePop = [];
 let subTables = [
-fullLootTable.uniqueLootTable     //0
+fullLootTable.uniqueLootTable     //0 
 ,fullLootTable.monsterLootTable   //1
 ,fullLootTable.animal_loot        //2
 ,fullLootTable.human_food_loot    //3
@@ -248,39 +249,62 @@ fullLootTable.uniqueLootTable     //0
 ,fullLootTable.rare_armor         //17
 ];
 
-function lootAlgorithm(arg){
+function lootAlgorithm(...arg){
   const table = document.getElementById('lootResultsTable');  
-  const runCount = arg.length;
-  let itemCount = Math.ceil(lootStatModifier/4 + lootStatModifierBonus/2);
+  const itemCount = Math.ceil(Math.round(Math.random()*lootStatModifier/4) + Math.round(Math.random()*lootStatModifierBonus/2));
+  table.innerHTML = 
+  `<thead>
+    <th>Looted Item</th>
+    <th>Description</th>
+    <th>Value</th>
+  </thead>
+  <tbody>
+  </tbody>`;
 
-  for(let i=0; i < runCount; i++){
-    tablePop.push(subTables[i]);
+  for(const obj of arg){
+    tablePop.push(obj);
   };
-  console.log(tablePop)
-  for(let i=0; i<itemCount; i++){
+  
+  for(let i=0; i < itemCount; i++){
     const newrow = table.insertRow(1); 
-    const cell1 = newrow.insertCell(0);
-    const cell2 = newrow.insertCell(1);
-    const cell3 = newrow.insertCell(2);
+    const cell = [newrow.insertCell(0), newrow.insertCell(1), newrow.insertCell(2)];
+    
+    const poolMax = arg.length
+    const poolMin = 0
+    const randomPoolSelect = Math.random()*(poolMax - poolMin + 1)
+    const randomItemSelect = Math.round(Math.random()*(tablePop[randomPoolSelect].length-1)) //random item from object (0 - last value)
 
-    cell1.innerHTML = tablePop[0][i].name; 
-    cell2.innerHTML = tablePop[0][i].description; 
-    cell3.innerHTML = tablePop[0][i].value; 
-}
-tablePop = [];
+    cell[0].innerHTML = tablePop[randomPoolSelect][randomItemSelect].name; 
+    cell[1].innerHTML = tablePop[randomPoolSelect][randomItemSelect].description; 
+    cell[2].innerHTML = tablePop[randomPoolSelect][randomItemSelect].value; 
+  };
+  tablePop = [];
 };
 
 function generateLoot() {
 if (lootStatModifier > 0){
   if (lootLocationModifier <= 1){
     lootAlgorithm(
-      subTables[12]
+      subTables[3]
+      ,subTables[5]
+      ,subTables[6]
+      ,subTables[7]
+      ,subTables[8]
+      ,subTables[9]
+      ,subTables[10]
+      ,subTables[11]
+      ,subTables[12]
       ,subTables[13]
       ,subTables[14]
       ,subTables[15]
+      ,subTables[16]
+      ,subTables[17]
     );
   } else if (lootLocationModifier = 2){
-
+    lootAlgorithm(
+    
+    
+    );
   } else if (lootLocationModifier = 3){
 
   } else if (lootLocationModifier = 4){
@@ -295,59 +319,5 @@ else{
 }};
 
 
-
-/*
-const lootTableroll = [];
-function lootTableRollPop(p1, p2){
-    for(i=0; i<p1; i++){
-  lootTableroll.push(p2[i]);
-};
-};
-
-function populateLootTableroll(p1,p2){
-rollTotal = Math.floor(p1/4);
-rollBonus = Math.ceil(p2/5);
-
-if (lootLocationModifier === 1){
-  lootTableRollPop(fullLootTable.dead_loot.length, fullLootTable.dead_loot);
-  console.log(lootTableroll[0].name);
-  finalLootTable()
-  //loottableroll[x].name and .desc and .value will populate our total table
-} else if (lootLocationModifier === 2){
-
-}else if (lootLocationModifier === 3){
-
-}else if (lootLocationModifier === 4){
-
-}else if (lootLocationModifier === 5){
-
-}else {
-
-}};
-
-function finalLootTable(){
-  if (rollTotal>0) {
-  for(i=0; i<(rollBonus+rollTotal); i++){
-    const table = document.getElementById('lootResultsTable');  
-    const newrow = table.insertRow(1); 
-    const cell1 = newrow.insertCell(0);
-    const cell2 = newrow.insertCell(1);
-    const cell3 = newrow.insertCell(2);
-  
-    cell1.innerHTML = lootTableroll[i].name; 
-    cell2.innerHTML = lootTableroll[i].description; 
-    cell3.innerHTML = lootTableroll[i].value; 
-  }} else{
-  const table = document.getElementById('lootResultsTable');  
-  const newrow = table.insertRow(1); 
-  const cell1 = newrow.insertCell(0);
-  const cell2 = newrow.insertCell(1);
-  const cell3 = newrow.insertCell(2);
-
-  cell1.innerHTML = ""; 
-  cell2.innerHTML = "you find nothing!"; 
-  cell3.innerHTML = "0gp"; 
-  };
-console.log('roll table went');
-};
-*/
+// remove uniques from the total table every time one is rolled. 
+// remove parens from value form
