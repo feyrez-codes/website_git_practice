@@ -228,6 +228,7 @@ import{fullLootTable} from './loot-generator-table.js';
 // chest loot = 6,
 
 let tablePop = [];
+let clipboardContent = '';
 let subTables = [
 fullLootTable.uniqueLootTable     //0 
 ,fullLootTable.monsterLootTable   //1
@@ -271,15 +272,23 @@ fullLootTable.uniqueLootTable     //0
 
 function lootAlgorithm(...arg){
   const table = document.getElementById('lootResultsTable');  
+  const clipboardButton = document.getElementById('copyToClipboard');
   const itemCount = Math.ceil(Math.round(Math.random()*lootStatModifier/4) + Math.round(Math.random()*lootStatModifierBonus/2));
   table.innerHTML = 
-  `<thead>
-    <th>Looted Item</th>
-    <th>Description</th>
-    <th>Value</th>
-  </thead>
-  <tbody>
-  </tbody>`;
+ `<table id="lootResultsTable" class="lootResultsTable">
+    <thead>
+      <th>Looted Item</th>
+      <th>Description</th>
+      <th>Value</th>
+    </thead>
+    <tbody>
+      <!--rows generated in js-->
+    </tbody>
+  </table>`;
+  clipboardButton.innerHTML = 
+  `<button onclick="
+  navigator.clipboard.writeText(${clipboardContent});
+  ">copy results`
 
   for(const obj of arg){
     tablePop.push(obj);
@@ -287,19 +296,34 @@ function lootAlgorithm(...arg){
   
   for(let i=0; i < itemCount; i++){
     const newrow = table.insertRow(1); 
+    newrow.id = `newrow_${i}`
     const cell = [newrow.insertCell(0), newrow.insertCell(1), newrow.insertCell(2)];
     
-    const poolMax = arg.length
-    const poolMin = arg.length-arg.length
+    const poolMax = Math.floor(arg.length*(lootStatModifier/20));
+    const poolMin = Math.floor(lootStatModifier/4);
 
     const randomPoolSelect = Math.round(Math.random()*(poolMax - poolMin)+poolMin);
     const randomItemSelect = Math.round(Math.random()*(tablePop[randomPoolSelect].length-1)); //random item from object (0 - last value)
     
-    cell[0].innerHTML = tablePop[randomPoolSelect][randomItemSelect].name; 
-    cell[1].innerHTML = tablePop[randomPoolSelect][randomItemSelect].description; 
-    cell[2].innerHTML = tablePop[randomPoolSelect][randomItemSelect].value; 
+    const lootName= tablePop[randomPoolSelect][randomItemSelect].name
+    const lootDescription = tablePop[randomPoolSelect][randomItemSelect].description
+    const lootValue = tablePop[randomPoolSelect][randomItemSelect].value
+    
+    cell[0].innerHTML = lootName; 
+    cell[1].innerHTML = lootDescription; 
+    cell[2].innerHTML = `<div class = "deleteformat">
+    <p class="priceText">${lootValue}</p>
+    <button class = "deleteitembutton" onclick="
+    lootResultsTable.deleteRow(newrow_${i}.rowIndex)
+      ">-x, sorry!
+</div>`;
+    
+    clipboardContent += `Loot ${i+1}: "`+lootName+`" `
+    clipboardContent += lootDescription
+    clipboardContent += ` (`+lootValue+`)`
   };
   tablePop = [];
+  console.log(clipboardContent);
 };
 
 function generateLoot() {

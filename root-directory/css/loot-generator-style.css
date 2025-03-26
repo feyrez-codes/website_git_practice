@@ -224,10 +224,37 @@ html{ /*page background style*/
   justify-content: center;
   display: flex;
 }
+.copyToClipboard{
+  justify-content: right;
+  width: 95%;
+  height: 3%;
+  display: flex;
+}
 .lootResultsTable{ /*sec3 results of loot query*/
   width: 95%;
   height: 20%;
+  table-layout: fixed;
+  text-align: left;
+  text-justify: top;
 }
 th{
   border: solid chocolate;
+  text-align: center;
+}
+.deleteformat{
+  display: flex;
+  flex-direction: row;
+  align-content: right;
+}
+.priceText{
+  height: 10%;
+  width: 25%;
+  padding: 0% 0% 0% 0%;
+  margin: 0% 25% 0% 0%;
+}
+.deleteitembutton{
+  height: 10%;
+  width: 25%;
+  padding: 0% 0% 0% 0%;
+  margin: 0% 0% 0% 25%;  
 }
