@@ -386,6 +386,7 @@ if (lootStatModifier > 0){
     );
 }}
 else{
+  const table = document.getElementById('lootResultsTable');  
   const newrow = table.insertRow(1); 
   const cell = [newrow.insertCell(0), newrow.insertCell(1), newrow.insertCell(2)];
     
