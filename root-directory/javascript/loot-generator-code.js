@@ -6,158 +6,58 @@ let lootStatModifierBonus = 0
 /********************************Location Selector Button Functions*******************/
 
 /*****************************Loot Location Variables*******************/
-let opacityModifierHmnElem = 0
-let opacityModifierMnstrElem = 0
-let opacityModifierChstElem = 0
-let opacityModifierFrntrElem = 0
-let opacityModifierGrvElem = 0
-let opacityModifierFoodElem = 0
-
-const monsterSearchButton = [
-  document.getElementById("lctnSelector_Mnstr_a")
-  , document.getElementById("lctnSelector_Mnstr_Hover")
-]
-const humanSearchButton = [
-  document.getElementById("lctnSelector_Hmn_a")
-  , document.getElementById("lctnSelector_Hmn_Hover")
-]
-const chestSearchButton = [
-  document.getElementById("lctnSelector_Chst_a")
-  , document.getElementById("lctnSelector_Chst_Hover")
-]
-const furnitureSearchButton = [
-  document.getElementById("lctnSelector_Frntr_a")
-  , document.getElementById("lctnSelector_Frntr_Hover")
-]
-const graveSearchButton = [
-  document.getElementById("lctnSelector_Grv_a")
-  , document.getElementById("lctnSelector_Grv_Hover")
-]
-const pantrySearchButton = [
-  document.getElementById("lctnSelector_Food_a")
-  , document.getElementById("lctnSelector_Food_Hover")
+const location = [
+  document.getElementById('lctnSelector_Hmn')
+  ,document.getElementById('lctnSelector_Mnstr')
+  ,document.getElementById('lctnSelector_Chst')
+  ,document.getElementById('lctnSelector_Frntr')
+  ,document.getElementById('lctnSelector_Grv')
+  ,document.getElementById('lctnSelector_Food')
+];
+const hoverimage = [
+  document.getElementById('lctnSelector_Hmn_Hover')
+  ,document.getElementById('lctnSelector_Mnstr_Hover')
+  ,document.getElementById('lctnSelector_Chst_Hover')
+  ,document.getElementById('lctnSelector_Frntr_Hover')
+  ,document.getElementById('lctnSelector_Grv_Hover')
+  ,document.getElementById('lctnSelector_Food_Hover')
 ]
 
-/*************Human Button interations****************/
-for(let i=0; i<=1; i++){
-humanSearchButton[i].addEventListener("mouseover", ()=>{
-  humanSearchButton[1].style.opacity = .8
-})};
-humanSearchButton[0].addEventListener("mouseleave", ()=>{
-  humanSearchButton[1].style.opacity = opacityModifierHmnElem
+for(let i=0; i<location.length; i++){
+location[i].addEventListener('mouseenter', ()=>{
+  hoverimage[i].classList.add('lctnSelector_Active');
 });
-for(let i=0; i<=1; i++){
-humanSearchButton[i].addEventListener("click", ()=>{
-  humanSearchButton[1].style.opacity = .8, opacityModifierHmnElem = .8
-  monsterSearchButton[1].style.opacity = 0, opacityModifierMnstrElem = 0
-  chestSearchButton[1].style.opacity = 0, opacityModifierChstElem = 0
-  furnitureSearchButton[1].style.opacity = 0, opacityModifierFrntrElem = 0
-  graveSearchButton[1].style.opacity = 0, opacityModifierGrvElem = 0
-  pantrySearchButton[1].style.opacity = 0, opacityModifierFoodElem = 0
-  lootLocationModifier = 1
-})};
+hoverimage[i].addEventListener('mouseenter', ()=>{
+  hoverimage[i].classList.add('lctnSelector_Active');
+});
+location[i].addEventListener('mouseleave', ()=>{
+  hoverimage[i].classList.remove('lctnSelector_Active');
+});
 
-/*************Monster Button interations****************/
-for(let i=0; i<=1; i++){
-monsterSearchButton[i].addEventListener("mouseover", ()=>{
-  monsterSearchButton[1].style.opacity = .8
-})};
-monsterSearchButton[0].addEventListener("mouseleave", ()=>{
-  monsterSearchButton[1].style.opacity = opacityModifierMnstrElem
-});
-for(let i=0; i<=1; i++){
-monsterSearchButton[1].addEventListener("click", ()=>{
-  humanSearchButton[1].style.opacity = 0, opacityModifierHmnElem = 0
-  monsterSearchButton[1].style.opacity = .8, opacityModifierMnstrElem = .8
-  chestSearchButton[1].style.opacity = 0, opacityModifierChstElem = 0
-  furnitureSearchButton[1].style.opacity = 0, opacityModifierFrntrElem = 0
-  graveSearchButton[1].style.opacity = 0, opacityModifierGrvElem = 0
-  pantrySearchButton[1].style.opacity = 0, opacityModifierFoodElem = 0
-  lootLocationModifier = 2
-})};
+location[i].addEventListener('click', ()=>{
+  hoverimage[i].classList.add('lctnSelector_Active');
 
-/*************Chest Button interations****************/
-for(let i=0; i<=1; i++){
-chestSearchButton[i].addEventListener("mouseover", ()=>{
-  chestSearchButton[1].style.opacity = .8
-})};
-chestSearchButton[0].addEventListener("mouseleave", ()=>{
-  chestSearchButton[1].style.opacity = opacityModifierChstElem
-});
-for(let i=0; i<=1; i++){
-chestSearchButton[i].addEventListener("click", ()=>{
-  humanSearchButton[1].style.opacity = 0, opacityModifierHmnElem = 0
-  monsterSearchButton[1].style.opacity = 0, opacityModifierMnstrElem = 0
-  chestSearchButton[1].style.opacity = .8, opacityModifierChstElem = .8
-  furnitureSearchButton[1].style.opacity = 0, opacityModifierFrntrElem = 0
-  graveSearchButton[1].style.opacity = 0, opacityModifierGrvElem = 0
-  pantrySearchButton[1].style.opacity = 0, opacityModifierFoodElem = 0
-  lootLocationModifier = 3
-})};
+  location[i].removeEventListener('mouseenter', ()=>{
+    hoverimage[i].classList.add('lctnSelector_Active');
+  });
+  
+  hoverimage[i].removeEventListener('mouseenter', ()=>{
+    hoverimage[i].classList.add('lctnSelector_Active');
+  });
 
-/*************Furniture Button interations****************/
-for(let i=0; i<=1; i++){
-furnitureSearchButton[i].addEventListener("mouseover", ()=>{
-  furnitureSearchButton[1].style.opacity = .8
-})};
-furnitureSearchButton[0].addEventListener("mouseleave", ()=>{
-  furnitureSearchButton[1].style.opacity = opacityModifierFrntrElem
-});
-for(let i=0; i<=1; i++){
-furnitureSearchButton[i].addEventListener("click", ()=>{
-  humanSearchButton[1].style.opacity = 0, opacityModifierHmnElem = 0
-  monsterSearchButton[1].style.opacity = 0, opacityModifierMnstrElem = 0
-  chestSearchButton[1].style.opacity = 0, opacityModifierChstElem = 0
-  furnitureSearchButton[1].style.opacity = .8, opacityModifierFrntrElem = .8
-  graveSearchButton[1].style.opacity = 0, opacityModifierGrvElem = 0
-  pantrySearchButton[1].style.opacity = 0, opacityModifierFoodElem = 0
-  lootLocationModifier = 4
-})};
+  location[i].removeEventListener('mouseleave', ()=>{
+    hoverimage[i].classList.remove('lctnSelector_Active');
+  });
 
-/*************Grave Button interations****************/
-for(let i=0; i<=1; i++){
-graveSearchButton[i].addEventListener("mouseover", ()=>{
-  graveSearchButton[1].style.opacity = .8
-})};
-graveSearchButton[0].addEventListener("mouseleave", ()=>{
-  graveSearchButton[1].style.opacity = opacityModifierGrvElem
-});
-for(let i=0; i<=1; i++){
-graveSearchButton[i].addEventListener("click", ()=>{
-  humanSearchButton[1].style.opacity = 0, opacityModifierHmnElem = 0
-  monsterSearchButton[1].style.opacity = 0, opacityModifierMnstrElem = 0
-  chestSearchButton[1].style.opacity = 0, opacityModifierChstElem = 0
-  furnitureSearchButton[1].style.opacity = 0, opacityModifierFrntrElem = 0
-  graveSearchButton[1].style.opacity = .8, opacityModifierGrvElem = .8
-  pantrySearchButton[1].style.opacity = 0, opacityModifierFoodElem = 0
-  lootLocationModifier = 5
-})};
-
-/*************Pantry Button interations****************/
-for(let i=0; i<=1; i++){
-pantrySearchButton[i].addEventListener("mouseover", ()=>{
-  pantrySearchButton[1].style.opacity = .8
-})};
-pantrySearchButton[0].addEventListener("mouseleave", ()=>{
-  pantrySearchButton[1].style.opacity = opacityModifierFoodElem
-});
-for(let i=0; i<=1; i++){
-pantrySearchButton[i].addEventListener("click", ()=>{
-  humanSearchButton[1].style.opacity = 0, opacityModifierHmnElem = 0
-  monsterSearchButton[1].style.opacity = 0, opacityModifierMnstrElem = 0
-  chestSearchButton[1].style.opacity = 0, opacityModifierChstElem = 0
-  furnitureSearchButton[1].style.opacity = 0, opacityModifierFrntrElem = 0
-  graveSearchButton[1].style.opacity = 0, opacityModifierGrvElem = 0
-  pantrySearchButton[1].style.opacity = .8, opacityModifierFoodElem = .8
-  lootLocationModifier = 6
-})};
+})
+};
 /**************************Button variables: D20input box (left)**************************/
 const enter20ishLMBTN = document.getElementById('d20ValueGenerateBtn');
 
 enter20ishLMBTN.addEventListener('click', ()=>{
   const enter20ishLMInput = document.getElementById('d20Valueinput_1');
-  lootStatModifier = enter20ishLMInput.value || 0;
-  (lootStatModifier > 20) ? lootStatModifierBonus = enter20ishFinalModifier - 20 : lootStatModifierBonus = 0;
+  enter20ishLMInput.value > 20 ? lootStatModifier = 20 : lootStatModifier = enter20ishLMInput.value;
+  lootStatModifier > 32 ? lootStatModifierBonus = 12 : lootStatModifierBonus > 20 ? lootStatModifierBonus = lootStatModifier - 20: lootStatModifierBonus = 0;
   generateLoot();
 });
 /**************************Button variables: D20input Stats (Middle)**************************/
@@ -168,10 +68,8 @@ const inputStatModifier_2 = document.getElementById('inputStatBonus_2');
 const inputStatModifier_3 = document.getElementById('inputStatBonus_3');
 
 inputStatLMBTN.addEventListener('click', ()=>{
-  lootStatModifier = inputStatModifier_Roll.value;
-  lootStatModifierBonus = Math.floor(
-    (inputStatModifier_1.value*.3)+(inputStatModifier_2.value*.4)+(inputStatModifier_3.value*.3)
-  );
+  inputStatModifier_Roll.value > 20 ? lootStatModifier = 20: lootStatModifier = inputStatModifier_Roll.value;
+  lootStatModifierBonus = Math.floor((inputStatModifier_1.value*.3)+(inputStatModifier_2.value*.4)+(inputStatModifier_3.value*.3));
   generateLoot();
 });
 
@@ -270,10 +168,16 @@ fullLootTable.uniqueLootTable     //0
 ,fullLootTable.magic_treasure     //31
 ];
 
+const clipboardButton = document.getElementById('copyToClipboard');
+clipboardButton.addEventListener('click', ()=>{
+navigator.clipboard.writeText(clipboardContent);
+alert("Copied!")
+});
+
 function lootAlgorithm(...arg){
+  clipboardContent = '';
   const table = document.getElementById('lootResultsTable');  
-  const clipboardButton = document.getElementById('copyToClipboard');
-  const itemCount = Math.ceil(Math.round(Math.random()*lootStatModifier/4) + Math.round(Math.random()*lootStatModifierBonus/2));
+  const itemCount = Math.round(Math.random()*2)+Math.round(Math.round(lootStatModifier/5)+Math.floor(lootStatModifierBonus/6)/2);
   table.innerHTML = 
  `<table id="lootResultsTable" class="lootResultsTable">
     <thead>
@@ -285,10 +189,7 @@ function lootAlgorithm(...arg){
       <!--rows generated in js-->
     </tbody>
   </table>`;
-  clipboardButton.innerHTML = 
-  `<button onclick="
-  navigator.clipboard.writeText(${clipboardContent});
-  ">copy results`
+  clipboardButton.innerHTML = `<button>copy results`;
 
   for(const obj of arg){
     tablePop.push(obj);
@@ -318,9 +219,10 @@ function lootAlgorithm(...arg){
       ">-x, sorry!
 </div>`;
     
-    clipboardContent += `Loot ${i+1}: "`+lootName+`" `
+    clipboardContent += `Loot ${i+1}: "`+lootName+`": `
     clipboardContent += lootDescription
-    clipboardContent += ` (`+lootValue+`)`
+    clipboardContent += ` (`+lootValue+`)
+`
   };
   tablePop = [];
   console.log(clipboardContent);
