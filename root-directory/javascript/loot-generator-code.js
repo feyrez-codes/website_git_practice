@@ -21,7 +21,7 @@ const hoverimage = [
   ,document.getElementById('lctnSelector_Frntr_Hover')
   ,document.getElementById('lctnSelector_Grv_Hover')
   ,document.getElementById('lctnSelector_Food_Hover')
-]
+];
 
 for(let i=0; i<location.length; i++){
 location[i].addEventListener('mouseenter', ()=>{
@@ -40,17 +40,13 @@ location[i].addEventListener('click', ()=>{
   location[i].removeEventListener('mouseenter', ()=>{
     hoverimage[i].classList.add('lctnSelector_Active');
   });
-  
   hoverimage[i].removeEventListener('mouseenter', ()=>{
     hoverimage[i].classList.add('lctnSelector_Active');
   });
-
   location[i].removeEventListener('mouseleave', ()=>{
     hoverimage[i].classList.remove('lctnSelector_Active');
   });
-
-})
-};
+})};
 /**************************Button variables: D20input box (left)**************************/
 const enter20ishLMBTN = document.getElementById('d20ValueGenerateBtn');
 
@@ -71,7 +67,7 @@ inputStatLMBTN.addEventListener('click', ()=>{
   inputStatModifier_Roll.value > 20 ? lootStatModifier = 20: lootStatModifier = inputStatModifier_Roll.value;
   lootStatModifierBonus = Math.floor((inputStatModifier_1.value*.3)+(inputStatModifier_2.value*.4)+(inputStatModifier_3.value*.3));
   generateLoot();
-});
+  });
 
 /**************************Button variables: RandomD20 (Right)**************************/
 const randRollValueChange = document.getElementById("randRollOutput")
@@ -126,7 +122,7 @@ import{fullLootTable} from './loot-generator-table.js';
 // chest loot = 6,
 
 let tablePop = [];
-let clipboardContent = '';
+let clipboardContent = [];
 let subTables = [
 fullLootTable.uniqueLootTable     //0 
 ,fullLootTable.monsterLootTable   //1
@@ -167,16 +163,12 @@ fullLootTable.uniqueLootTable     //0
 ,fullLootTable.magic_weapon       //30
 ,fullLootTable.magic_treasure     //31
 ];
-
+const table = document.getElementById('lootResultsTable');  
 const clipboardButton = document.getElementById('copyToClipboard');
-clipboardButton.addEventListener('click', ()=>{
-navigator.clipboard.writeText(clipboardContent);
-alert("Copied!")
-});
 
 function lootAlgorithm(...arg){
-  clipboardContent = '';
-  const table = document.getElementById('lootResultsTable');  
+  tablePop = [];
+  clipboardContent = [];
   const itemCount = Math.round(Math.random()*2)+Math.round(Math.round(lootStatModifier/5)+Math.floor(lootStatModifierBonus/6)/2);
   table.innerHTML = 
  `<table id="lootResultsTable" class="lootResultsTable">
@@ -189,7 +181,7 @@ function lootAlgorithm(...arg){
       <!--rows generated in js-->
     </tbody>
   </table>`;
-  clipboardButton.innerHTML = `<button>copy results`;
+  clipboardButton.innerHTML = `copy results`;
 
   for(const obj of arg){
     tablePop.push(obj);
@@ -197,7 +189,7 @@ function lootAlgorithm(...arg){
   
   for(let i=0; i < itemCount; i++){
     const newrow = table.insertRow(1); 
-    newrow.id = `newrow_${i}`
+    newrow.id = `newrow_${itemCount-i}`
     const cell = [newrow.insertCell(0), newrow.insertCell(1), newrow.insertCell(2)];
     
     const poolMax = Math.floor(arg.length*(lootStatModifier/20));
@@ -214,18 +206,33 @@ function lootAlgorithm(...arg){
     cell[1].innerHTML = lootDescription; 
     cell[2].innerHTML = `<div class = "deleteformat">
     <p class="priceText">${lootValue}</p>
-    <button class = "deleteitembutton" onclick="
-    lootResultsTable.deleteRow(newrow_${i}.rowIndex)
+    <button class = "deleteitembutton_${i}"
+    onclick="
+      lootResultsTable.deleteRow(newrow_${itemCount-i}.rowIndex);
       ">-x, sorry!
 </div>`;
-    
-    clipboardContent += `Loot ${i+1}: "`+lootName+`": `
-    clipboardContent += lootDescription
-    clipboardContent += ` (`+lootValue+`)
-`
+
+    let clipboardStaging = '';
+
+    i !== itemCount-1 ? clipboardStaging += `
+Loot ${itemCount-i}: "`+lootName+`": `: clipboardStaging += `Loot ${itemCount-i}: "`+lootName+`": `;
+    clipboardStaging += lootDescription;
+    clipboardStaging += ` (`+lootValue+`)`;
+    clipboardContent.unshift(clipboardStaging);
   };
+
+  clipboardButton.addEventListener('click', ()=>{
+    const rows = table.getElementsByTagName('thead')[0].getElementsByTagName('tr');
+
+    for (let i = 1; i<rows.length; i++){
+      if(rows[i].id != `newrow_${i}`){clipboardContent.splice(i-1,0, i=0 ? `Loot ${i}: Removed`: `
+Loot ${i}: Removed`)}};
+
+    navigator.clipboard.writeText(clipboardContent)
+    alert("Copied!");
+  });
+    
   tablePop = [];
-  console.log(clipboardContent);
 };
 
 function generateLoot() {

@@ -98,14 +98,14 @@
 <!--(2a) widget: left loot generate (enter a dirty d20)-->
             <div class="d20ValueCon" id="d20ValueCon" disabled>
               <label for="d20Valueinput_1">Input your roll with any modifiers:</label>
-              <input type="text" name="d20Valueinput_1" id="d20Valueinput_1" class="d20Valueinput_1">
+              <input type="number" placeholder="enter number" name="d20Valueinput_1" id="d20Valueinput_1" class="d20Valueinput_1">
               <button type="button" id="d20ValueGenerateBtn" class="d20ValueGenerateBtn">Generate Loot</button>
             </div>
 
 <!--(2b) widget: middle loot generate (enter your character stats)-->
             <div class="inputStatCon" id="inputStatCon" disabled>
               <label for="inputStatinput_1">Nat D20 Value:</label>
-              <input type="text" name="inputStatinput_1" id="inputStatinput_1">
+              <input placeholder="enter your roll" name="inputStatinput_1" id="inputStatinput_1">
               <label for="inputStatBonus_1">What is your PERCEPTION bonus?</label>
               <select name="inputStatBonus_1" id="inputStatBonus_1" class="inputStatBonus_1">
               </select>
@@ -138,7 +138,7 @@
 <!--(3) results table-->
         <div id="rightconfoot" class="rightconfoot">
           <p class="rightConFoot_H">Step III: Grab the Loot and Run!</p>
-          <div id="copyToClipboard" class="copyToClipboard"><button><del>copy results</del></div>
+          <div class="copyToClipboardDiv"><button id="copyToClipboard" class="copyToClipboard"><del>copy results</del></div>
           <div id="lootResultsCon" class="lootResultsCon">
             <table id="lootResultsTable" class="lootResultsTable">
               <thead>

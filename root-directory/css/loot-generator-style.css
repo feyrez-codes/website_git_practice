@@ -142,7 +142,7 @@ button:hover{
   font-size: 14px;
   display: flex;
   flex-direction: column;
-  text-align: center;
+  text-align: left;
   }
 .d20ValueCon{
   margin: -245px 0px 0px 3%;
@@ -189,6 +189,7 @@ button:hover{
       color: white;
       font: arial;
       font-size: 30px;
+      text-align: center;
     }
     .randRollCon button{
       margin: 42px 0px 5px 20%;
@@ -220,7 +221,7 @@ button:hover{
   justify-content: center;
   display: flex;
 }
-.copyToClipboard{
+.copyToClipboardDiv{
   justify-content: right;
   width: 95%;
   height: 3%;
@@ -235,7 +236,7 @@ button:hover{
 }
 th{
   border: solid chocolate;
-  text-align: center;
+  text-align: left;
 }
 .deleteformat{
   display: flex;
@@ -248,7 +249,7 @@ th{
   padding: 0% 0% 0% 0%;
   margin: 0% 25% 0% 0%;
 }
-.deleteitembutton{
+.lootResultsTable button{
   height: 10%;
   width: 25%;
   padding: 0% 0% 0% 0%;
