@@ -2,7 +2,7 @@
 let lootLocationModifier = 0
 let lootStatModifier = 0
 let lootStatModifierBonus = 0
-
+let itemCount = 0
 /********************************Location Selector Button Functions*******************/
 
 /*****************************Loot Location Variables*******************/
@@ -122,7 +122,6 @@ import{fullLootTable} from './loot-generator-table.js';
 // chest loot = 6,
 
 let tablePop = [];
-let clipboardContent = [];
 let subTables = [
 fullLootTable.uniqueLootTable     //0 
 ,fullLootTable.monsterLootTable   //1
@@ -168,8 +167,7 @@ const clipboardButton = document.getElementById('copyToClipboard');
 
 function lootAlgorithm(...arg){
   tablePop = [];
-  clipboardContent = [];
-  const itemCount = Math.round(Math.random()*2)+Math.round(Math.round(lootStatModifier/5)+Math.floor(lootStatModifierBonus/6)/2);
+  itemCount = Math.round(Math.random()*2)+Math.round(Math.round(lootStatModifier/5)+Math.floor(lootStatModifierBonus/6)/2);
   table.innerHTML = 
  `<table id="lootResultsTable" class="lootResultsTable">
     <thead>
@@ -181,7 +179,6 @@ function lootAlgorithm(...arg){
       <!--rows generated in js-->
     </tbody>
   </table>`;
-  clipboardButton.innerHTML = `copy results`;
 
   for(const obj of arg){
     tablePop.push(obj);
@@ -211,28 +208,25 @@ function lootAlgorithm(...arg){
       lootResultsTable.deleteRow(newrow_${itemCount-i}.rowIndex);
       ">-x, sorry!
 </div>`;
-
-    let clipboardStaging = '';
-
-    i !== itemCount-1 ? clipboardStaging += `
-Loot ${itemCount-i}: "`+lootName+`": `: clipboardStaging += `Loot ${itemCount-i}: "`+lootName+`": `;
-    clipboardStaging += lootDescription;
-    clipboardStaging += ` (`+lootValue+`)`;
-    clipboardContent.unshift(clipboardStaging);
   };
-
-  clipboardButton.addEventListener('click', ()=>{
-    const rows = table.getElementsByTagName('thead')[0].getElementsByTagName('tr');
-
-    for (let i = 1; i<rows.length; i++){
-      if(rows[i].id != `newrow_${i}`){clipboardContent.splice(i-1,0, i=0 ? `Loot ${i}: Removed`: `
-Loot ${i}: Removed`)}};
-
-    navigator.clipboard.writeText(clipboardContent)
-    alert("Copied!");
-  });
     
   tablePop = [];
+  clipboardButton.innerHTML = `copy results`;
+  clipboardButton.addEventListener('click', ()=>{
+    const clipboardStaging = [];
+  
+    for (let i = 1; i<itemCount+1; i++){
+      const rows = document.getElementById(`newrow_${i}`);
+      const priceCell = rows.cell[2]
+
+      i === 1 ? clipboardStaging.push(`Item ${i}: ${rows.cell[0].innerHTML},  ${rows.cells[1].innerHTML}` )
+      : clipboardStaging.push(`
+Item ${i}: ${rows.cells[0].innerHTML},  ${rows.cells[1].innerHTML}`)
+    };
+    console.log(clipboardStaging);
+    navigator.clipboard.writeText(clipboardStaging);
+    alert("Copied!");
+  });
 };
 
 function generateLoot() {
@@ -402,5 +396,12 @@ else{
   cell[2].innerHTML = 'worthless'; 
 }};
 
+
+/* code testing for Clipboard Content */
+
+
+
+
+// Suggestions:
 // remove uniques from the total table every time one is rolled. 
 // remove parens from value form
