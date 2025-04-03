@@ -1,69 +1,43 @@
-/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--background--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
-body{
+/*****************Page Design*************************/
+html{ /*page background style*/
   background-image: url("../images/fantasymap.jpg");
 }
 
-/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--header--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
-/**header buttons**/
-.header1{
+/*****************Header Label*************************/
+.header1{ /*buttons in header style*/
   margin: auto;
   width: 50%;
   padding: 10px;     
   display: flex;       
 }
-/**top of page button styling**/
-.H_rsrce_btn, .CS_rsrce_btn{ 
+
+/*****************Top of Page Button Styling*************************/
+.H_rsrce_btn, .CS_rsrce_btn{ /*Both buttons, no color edits*/
   border-radius: 8px;
-  border-style: none;
-  box-sizing: border-box;
   color: black;
-  cursor: pointer;
-  display: inline-block;
   font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  font-weight: 500;
   height: 40%;
   width: 50%;
-  line-height: 20px;
-  list-style: none;
-  outline: none;
   text-align: center;
   text-decoration: none;
-  transition: color 100ms;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
 }
-.H_rsrce_btn{ 
+.H_rsrce_btn{ /*HTML button color*/
   background-color: burlywood;
 }
-.CS_rsrce_btn{ 
+.CS_rsrce_btn{ /*CSS button color*/
   background-color: chocolate;
 }
 
-/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--body--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
-/*body design*/
-.maincon{ 
+/*****************Body and Index editing*************************/
+.maincon{  /*entire body*/
   padding: 10px;
   display: flex;
 }
-/*left index*/
-.leftcon{
+.leftcon{  /*index: left of page*/
   width: 10%;
   height: 500px;
   border: 2px solid chocolate;
   padding: 10px;
   background-color: beige;
-}
-/*right interactible*/
-.rightcon{ 
-  width: 80%;
-  height: 5000px;
-  margin-left: 2%;
-  padding: 10px;
-  border: 2px solid chocolate;
-  background-color: beige;
-  direction: flex;
-  flex-direction: column;
-  align-items: auto;
 }

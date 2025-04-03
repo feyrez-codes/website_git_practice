@@ -1,46 +1,4 @@
-/*****************Page Design*************************/
-html{ /*page background style*/
-  background-image: url("../images/fantasymap.jpg");
-}
 
-/*****************Header Label*************************/
-.header1{ /*buttons in header style*/
-  margin: auto;
-  width: 50%;
-  padding: 10px;     
-  display: flex;       
-}
-
-/*****************Top of Page Button Styling*************************/
-.H_rsrce_btn, .CS_rsrce_btn{ /*Both buttons, no color edits*/
-  border-radius: 8px;
-  color: black;
-  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  height: 40%;
-  width: 50%;
-  text-align: center;
-  text-decoration: none;
-}
-.H_rsrce_btn{ /*HTML button color*/
-  background-color: burlywood;
-}
-.CS_rsrce_btn{ /*CSS button color*/
-  background-color: chocolate;
-}
-
-/*****************Body and Index editing*************************/
-.maincon{  /*entire body*/
-  padding: 10px;
-  display: flex;
-}
-.leftcon{  /*index: left of page*/
-  width: 10%;
-  height: 500px;
-  border: 2px solid chocolate;
-  padding: 10px;
-  background-color: beige;
-}
 
 /*****************Right container: interactive layer*************************/
 .rightcon{  

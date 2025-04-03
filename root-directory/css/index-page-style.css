@@ -1,3 +1,13 @@
+/*****************Right container: interactive layer*************************/
+.rightcon{  
+  width: 80%;
+  height: 100%;
+  margin-left: 2%;
+  padding: 10px;
+  background-color: beige;
+  border: 2px solid chocolate;
+}
+
 /*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--hover box --%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
 .HoverContainer{ 
   background-image: url("../images/wood frame.webp");
