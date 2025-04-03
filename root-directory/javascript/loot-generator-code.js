@@ -7,12 +7,12 @@ let itemCount = 0
 
 /*****************************Loot Location Variables*******************/
 const location = [
-  document.getElementById('lctnSelector_Hmn')
-  ,document.getElementById('lctnSelector_Mnstr')
-  ,document.getElementById('lctnSelector_Chst')
-  ,document.getElementById('lctnSelector_Frntr')
-  ,document.getElementById('lctnSelector_Grv')
-  ,document.getElementById('lctnSelector_Food')
+  document.getElementById('lctnSelector_Hmn_Con')
+  ,document.getElementById('lctnSelector_Mnstr_Con')
+  ,document.getElementById('lctnSelector_Chst_Con')
+  ,document.getElementById('lctnSelector_Frntr_Con')
+  ,document.getElementById('lctnSelector_Grv_Con')
+  ,document.getElementById('lctnSelector_Food_Con')
 ];
 const hoverimage = [
   document.getElementById('lctnSelector_Hmn_Hover')
@@ -23,30 +23,25 @@ const hoverimage = [
   ,document.getElementById('lctnSelector_Food_Hover')
 ];
 
-for(let i=0; i<location.length; i++){
-location[i].addEventListener('mouseenter', ()=>{
-  hoverimage[i].classList.add('lctnSelector_Active');
-});
-hoverimage[i].addEventListener('mouseenter', ()=>{
-  hoverimage[i].classList.add('lctnSelector_Active');
-});
-location[i].addEventListener('mouseleave', ()=>{
-  hoverimage[i].classList.remove('lctnSelector_Active');
+for(let a = 0; a<6; a++ ){
+location[a].addEventListener('mouseenter', ()=>{
+  hoverimage[a].classList.add('lctnSelector_Active');
 });
 
-location[i].addEventListener('click', ()=>{
-  hoverimage[i].classList.add('lctnSelector_Active');
+location[a].addEventListener('mouseleave', ()=>{
+  hoverimage[a].classList.remove('lctnSelector_Active');
+});
 
-  location[i].removeEventListener('mouseenter', ()=>{
-    hoverimage[i].classList.add('lctnSelector_Active');
-  });
-  hoverimage[i].removeEventListener('mouseenter', ()=>{
-    hoverimage[i].classList.add('lctnSelector_Active');
-  });
-  location[i].removeEventListener('mouseleave', ()=>{
-    hoverimage[i].classList.remove('lctnSelector_Active');
-  });
-})};
+location[a].addEventListener('click', ()=>{
+  let c = a
+  hoverimage[a].classList.add('lctnSelector_Active_2');
+  for(let b=0; b<6; b++){
+    if(b===c){continue}
+    else{hoverimage[b].classList.remove('lctnSelector_Active_2')}
+  };
+});
+};
+
 /**************************Button variables: D20input box (left)**************************/
 const enter20ishLMBTN = document.getElementById('d20ValueGenerateBtn');
 
@@ -213,16 +208,17 @@ function lootAlgorithm(...arg){
   tablePop = [];
   clipboardButton.innerHTML = `copy results`;
   clipboardButton.addEventListener('click', ()=>{
-    const clipboardStaging = [];
+    let clipboardStaging = '';
     const rows = table.getElementsByTagName('thead')[0].getElementsByTagName('tr');
+    
     for (let i = 1; i<rows.length; i++){
       const cell = [table.getElementsByTagName('tr')[i].getElementsByTagName('td')[0].innerHTML, table.getElementsByTagName('tr')[i].getElementsByTagName('td')[1].innerHTML,table.getElementsByTagName('tr')[i].getElementsByTagName('td')[2].innerHTML];
-      
-      i === 1 ? clipboardStaging.push(`Item ${i}: ${cell[0]},  ${cell[1]}` )
-      : clipboardStaging.push(`
-Item ${i}: ${cell[0]},  ${cell[1]}`)
+      const price = table.getElementsByTagName('tr')[i].getElementsByTagName('td')[2].getElementsByTagName('div')[0].getElementsByTagName('p')[0].innerHTML;
+
+      i === 1 ? clipboardStaging +=(`Item ${i}: ${cell[0]},  ${cell[1]}, (${price})` )
+      : clipboardStaging +=(`
+Item ${i}: ${cell[0]},  ${cell[1]}, (${price})`)
     };
-    console.log(clipboardStaging);
     navigator.clipboard.writeText(clipboardStaging);
     alert("Copied!");
     

@@ -95,6 +95,9 @@ html{ /*page background style*/
   opacity: .8;
   cursor: pointer;
 }
+.lctnSelector_Active_2{
+  opacity: .8;
+}
 button:hover{
   cursor: pointer;
 }
