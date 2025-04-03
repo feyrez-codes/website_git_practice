@@ -214,19 +214,19 @@ function lootAlgorithm(...arg){
   clipboardButton.innerHTML = `copy results`;
   clipboardButton.addEventListener('click', ()=>{
     const clipboardStaging = [];
-  
-    for (let i = 1; i<itemCount+1; i++){
-      const rows = document.getElementById(`newrow_${i}`);
-      const priceCell = rows.cell[2]
-
-      i === 1 ? clipboardStaging.push(`Item ${i}: ${rows.cell[0].innerHTML},  ${rows.cells[1].innerHTML}` )
+    const rows = table.getElementsByTagName('thead')[0].getElementsByTagName('tr');
+    for (let i = 1; i<rows.length; i++){
+      const cell = [table.getElementsByTagName('tr')[i].getElementsByTagName('td')[0].innerHTML, table.getElementsByTagName('tr')[i].getElementsByTagName('td')[1].innerHTML,table.getElementsByTagName('tr')[i].getElementsByTagName('td')[2].innerHTML];
+      
+      i === 1 ? clipboardStaging.push(`Item ${i}: ${cell[0]},  ${cell[1]}` )
       : clipboardStaging.push(`
-Item ${i}: ${rows.cells[0].innerHTML},  ${rows.cells[1].innerHTML}`)
+Item ${i}: ${cell[0]},  ${cell[1]}`)
     };
     console.log(clipboardStaging);
     navigator.clipboard.writeText(clipboardStaging);
     alert("Copied!");
-  });
+    
+    });
 };
 
 function generateLoot() {
