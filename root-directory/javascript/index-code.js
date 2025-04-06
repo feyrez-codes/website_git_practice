@@ -1,4 +1,5 @@
 /*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--variables--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+/*
 const revenButton = document.getElementById("Reven_button");
 const sharnButton = document.getElementById("Sharn_button");
 const kfButton = document.getElementById("KF_button");
@@ -7,8 +8,6 @@ const paragraph = document.getElementById("summ_def_text");
 const header = document.getElementById("Summarytag");
 const hovertext = document.getElementById("Hovertext");
 let hoverBoxNewTxt = "Your Location"
-
-/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--Reven button--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
 revenButton.addEventListener("mouseover", ()=>{
   hovertext.textContent = "Reven"
 });
@@ -21,7 +20,6 @@ revenButton.addEventListener("click", ()=>{
   hoverBoxNewTxt = "Reven"
 });
 
-/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--Sharn Button--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
 sharnButton.addEventListener("mouseover", ()=>{
   hovertext.textContent = "Sharn"
 });
@@ -34,7 +32,6 @@ sharnButton.addEventListener("click", ()=>{
   hoverBoxNewTxt = "Sharn"
 });
 
-/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--King's Forest Button--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
 kfButton.addEventListener("mouseover", ()=>{
   hovertext.textContent = "King's Forest"
 });
@@ -47,7 +44,6 @@ kfButton.addEventListener("click", ()=>{
   hoverBoxNewTxt = "King's Forest"
 });
 
-/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--DragonRoost button--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
 dragonroostButton.addEventListener("mouseover", ()=>{
   hovertext.textContent = "Dragonroost"
 });
@@ -59,3 +55,4 @@ dragonroostButton.addEventListener("click", ()=>{
   paragraph.textContent = "The city of dragons, some called it. When we arrived, the dragon city was burning."
   hoverBoxNewTxt = "Dragonroost"
 });
+*/
