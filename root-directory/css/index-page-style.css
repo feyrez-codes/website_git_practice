@@ -25,20 +25,51 @@
   height: 150px;
 }
 /*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--Eberron Map--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+.mapToolMasterDiv{
+  height: 450px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.mapToolIndex{
+  width: 20%;
+}
+.mapToolIndex img{
+  width: 100%;
+  height: 400px;
+}
+
 .imgbox_rightcon{
   height: 400px;
-  width: 100%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
 }
 .mainmap_rightcon {
   border: 2px solid black;
-  height: 100%;
-  width: 100%;
-  margin: 0;
+  height: 1000px;
+  width: 1400px;
 }
-.map_pin1, .map_pin2, .map_pin3, .map_pin4{
+.map_pin1{
   height: 10%;
   width: 5%;
-  margin: -20% 0 0 0;
+  margin: -250px 0 0 0;
+}
+.map_pin2{
+  height: 10%;
+  width: 5%;
+  margin: -250px 0 0 0;
+}
+.map_pin3{
+  height: 10%;
+  width: 5%;
+  margin: -250px 0 0 0;
+}
+.map_pin4{
+  height: 10%;
+  width: 5%;
+  margin: -250px 0 0 0;
 }
 /*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--summary box--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
 .summbox{
