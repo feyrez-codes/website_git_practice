@@ -1,4 +1,4 @@
-/** Global Looting Variables (adjusted by below levers)**/
+/** Global Looting Variables (adjusted below)**/
 let lootLocationModifier = 0
 let lootStatModifier = 0
 let lootStatModifierBonus = 0
@@ -112,11 +112,11 @@ randRollbtn.addEventListener("click",()=>{
 });
 
 /**************************Loot Table Variables: Populate and generate final loot table**************************/
-
 import{fullLootTable} from './loot-generator-table.js';
-// chest loot = 6,
 
-let tablePop = [];
+const table = document.getElementById('lootResultsTable');  
+const clipboardButton = document.getElementById('copyToClipboard');
+let lootStaging = [];
 let subTables = [
 fullLootTable.uniqueLootTable     //0 
 ,fullLootTable.monsterLootTable   //1
@@ -157,76 +157,7 @@ fullLootTable.uniqueLootTable     //0
 ,fullLootTable.magic_weapon       //30
 ,fullLootTable.magic_treasure     //31
 ];
-const table = document.getElementById('lootResultsTable');  
-const clipboardButton = document.getElementById('copyToClipboard');
-
-function lootAlgorithm(...arg){
-  tablePop = [];
-  itemCount = Math.round(Math.random()*2)+Math.round(Math.round(lootStatModifier/5)+Math.floor(lootStatModifierBonus/6)/2);
-  table.innerHTML = 
- `<table id="lootResultsTable" class="lootResultsTable">
-    <thead>
-      <th>Looted Item</th>
-      <th>Description</th>
-      <th>Value</th>
-    </thead>
-    <tbody>
-      <!--rows generated in js-->
-    </tbody>
-  </table>`;
-
-  for(const obj of arg){
-    tablePop.push(obj);
-  };
-  
-  for(let i=0; i < itemCount; i++){
-    const newrow = table.insertRow(1); 
-    newrow.id = `newrow_${itemCount-i}`
-    const cell = [newrow.insertCell(0), newrow.insertCell(1), newrow.insertCell(2)];
-    
-    const poolMax = Math.floor(arg.length*(lootStatModifier/20));
-    const poolMin = Math.floor(lootStatModifier/4);
-
-    const randomPoolSelect = Math.round(Math.random()*(poolMax - poolMin)+poolMin);
-    const randomItemSelect = Math.round(Math.random()*(tablePop[randomPoolSelect].length-1)); //random item from object (0 - last value)
-    
-    const lootName= tablePop[randomPoolSelect][randomItemSelect].name
-    const lootDescription = tablePop[randomPoolSelect][randomItemSelect].description
-    const lootValue = tablePop[randomPoolSelect][randomItemSelect].value
-    
-    cell[0].innerHTML = lootName; 
-    cell[1].innerHTML = lootDescription; 
-    cell[2].innerHTML = `<div class = "deleteformat">
-    <p class="priceText">${lootValue}</p>
-    <button class = "deleteitembutton_${i}"
-    onclick="
-      lootResultsTable.deleteRow(newrow_${itemCount-i}.rowIndex);
-      ">-x, sorry!
-</div>`;
-  };
-    
-  tablePop = [];
-  clipboardButton.innerHTML = `copy results`;
-  clipboardButton.addEventListener('click', ()=>{
-    let clipboardStaging = '';
-    const rows = table.getElementsByTagName('thead')[0].getElementsByTagName('tr');
-    
-    for (let i = 1; i<rows.length; i++){
-      const cell = [table.getElementsByTagName('tr')[i].getElementsByTagName('td')[0].innerHTML, table.getElementsByTagName('tr')[i].getElementsByTagName('td')[1].innerHTML,table.getElementsByTagName('tr')[i].getElementsByTagName('td')[2].innerHTML];
-      const price = table.getElementsByTagName('tr')[i].getElementsByTagName('td')[2].getElementsByTagName('div')[0].getElementsByTagName('p')[0].innerHTML;
-
-      i === 1 ? clipboardStaging +=(`Item ${i}: ${cell[0]},  ${cell[1]}, (${price})` )
-      : clipboardStaging +=(`
-Item ${i}: ${cell[0]},  ${cell[1]}, (${price})`)
-    };
-    navigator.clipboard.writeText(clipboardStaging);
-    alert("Copied!");
-    
-    });
-};
-
 function generateLoot() {
-if (lootStatModifier > 0){
   if (lootLocationModifier <= 1){
     lootAlgorithm(
       subTables[0] //unique
@@ -381,22 +312,87 @@ if (lootStatModifier > 0){
       ,subTables[4] //nature
       ,subTables[5] //potion 
     );
-}}
-else{
-  const table = document.getElementById('lootResultsTable');  
-  const newrow = table.insertRow(1); 
-  const cell = [newrow.insertCell(0), newrow.insertCell(1), newrow.insertCell(2)];
-    
-  cell[0].innerHTML = 'nothing?'; 
-  cell[1].innerHTML = 'your search is fruitless..'; 
-  cell[2].innerHTML = 'worthless'; 
 }};
 
+function lootAlgorithm(...flexSubtables){
+  let tablePop = [];
+  itemCount = Math.round(lootStatModifier/10 + (Math.random()*(lootStatModifierBonus/6)))
+  console.log(itemCount)
+  table.innerHTML = 
+ `<table id="lootResultsTable" class="lootResultsTable">
+    <thead>
+      <th>Looted Item</th>
+      <th>Description</th>
+      <th>Value</th>
+    </thead>
+    <tbody>
+      <!--rows generated in js-->
+    </tbody>
+  </table>`;
 
-/* code testing for Clipboard Content */
+  //populate available loot options from provided subtables
+  for(const subtableSelection of flexSubtables){
+    tablePop.push(subtableSelection);
+  };
 
+  //random item selector algorithm
+  if (itemCount === 0){lootStaging.push(['Nothing!', 'Your search yeilds no results..', '0gp'])}
+  else{
+    for(let i=0; i < itemCount; i++){
+      const poolNum = flexSubtables.length;
+      const poolMax = math.round(poolNum * 
+        (((lootStatModifier)+ //1-20
+        (Math.floor(lootStatModifierBonus/7)*10)) //0-10
+        /30)
+      );
+      const randomPoolSelect = Math.round(Math.random() * (poolMax));
+      const randomItemSelect = Math.round(Math.random()*(tablePop[randomPoolSelect].length-1));
 
+      const lootName= tablePop[randomPoolSelect][randomItemSelect].name
+      const lootDescription = tablePop[randomPoolSelect][randomItemSelect].description
+      const lootValue = tablePop[randomPoolSelect][randomItemSelect].value
+      
+      lootStaging.push([lootName, lootDescription, lootValue]);
+  };}
+  console.log(lootStaging)
 
+  //handling duplicate items
+  for(let i = 0; i<lootStaging.length; i++){
+
+    
+    const newrow = table.insertRow(1); 
+    newrow.id = `newrow_${itemCount-i}`
+    const cell = [newrow.insertCell(0), newrow.insertCell(1), newrow.insertCell(2)];
+
+    cell[0].innerHTML = lootStaging[i][0]; 
+    cell[1].innerHTML = lootStaging[i][1]; 
+    cell[2].innerHTML = `<div class = "deleteformat">
+    <p class="priceText">${lootStaging[i][2]}</p>
+    <button class = "deleteitembutton_${i}"
+    onclick="
+      lootResultsTable.deleteRow(newrow_${itemCount-i}.rowIndex);
+      ">-x, sorry!
+</div>`;
+  };
+
+  //clipboard button functionality
+  clipboardButton.innerHTML = `copy results`;
+  clipboardButton.addEventListener('click', ()=>{
+    let clipboardStaging = '';
+    const rows = table.getElementsByTagName('thead')[0].getElementsByTagName('tr');
+    
+    for (let i = 1; i<rows.length; i++){
+      const cell = [table.getElementsByTagName('tr')[i].getElementsByTagName('td')[0].innerHTML, table.getElementsByTagName('tr')[i].getElementsByTagName('td')[1].innerHTML,table.getElementsByTagName('tr')[i].getElementsByTagName('td')[2].innerHTML];
+      const price = table.getElementsByTagName('tr')[i].getElementsByTagName('td')[2].getElementsByTagName('div')[0].getElementsByTagName('p')[0].innerHTML;
+
+      i === 1 ? clipboardStaging +=(`Item ${i}: ${cell[0]},  ${cell[1]}, (${price})` )
+      : clipboardStaging +=(`
+Item ${i}: ${cell[0]},  ${cell[1]}, (${price})`)
+    };
+    navigator.clipboard.writeText(clipboardStaging);
+    alert("Copied!");
+    });
+};
 
 // Suggestions:
 // remove uniques from the total table every time one is rolled. 

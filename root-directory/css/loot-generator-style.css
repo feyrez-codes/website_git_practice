@@ -84,14 +84,17 @@ button:hover{
 .rollerBox{ /*sec2: roller container (When selected, each treasure chest creates a prompt. This box governs the layout of the prompts)*/
   width: 100%;
   margin-bottom: 5px;
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  padding: 0 5% 0 5%;
 }
     .rollerBox button{
-      width: 20%;
+      width: 25%;
       height: 20px;
+      font-size: 70%;
     }
     .inputRoll{
-      margin: 0 12% 0 12%
+      margin: 0 7.5% 0 7.5%;
     }
     
 .d20ValueCon, .inputStatCon, .randRollCon{
