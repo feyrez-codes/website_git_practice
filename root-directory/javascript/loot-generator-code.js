@@ -3,6 +3,8 @@ let lootLocationModifier = 0
 let lootStatModifier = 0
 let lootStatModifierBonus = 0
 let itemCount = 0
+import{fullLootTable} from '/loot-generator-table.js'
+
 /********************************Location Selector Button Functions*******************/
 
 /*****************************Loot Location Variables*******************/
@@ -38,9 +40,33 @@ location[a].addEventListener('click', ()=>{
   for(let b=0; b<6; b++){
     if(b===c){continue}
     else{hoverimage[b].classList.remove('lctnSelector_Active_2')}
-  };
-});
-};
+  }})};
+
+async function populateLootTable(unique, monsterLoot, animal, humanFood, nature, potion, ammunition, dead, x) {
+  let lootPool = [];
+  let lootPoolReMap = [];
+
+  for(const subTable in fullLootTable) lootPool.push(subTable);
+  function funcStackTable(x,y){for(let i = 0; i<x; i++) lootPoolReMap.push(y)};
+
+  lootPool.forEach((subTable)=>{
+    subTable.includes('uniqueLoot') ? funcStackTable(unique,subTable)
+    : subTable.includes('monsterLoot') ? funcStackTable(monsterLoot,subTable)
+    : subTable.includes('animal') ? funcStackTable(animal, subTable)
+    : subTable.includes('human_food') ? funcStackTable(humanFood, subTable)
+    : subTable.includes('nature') ? funcStackTable(nature, subTable)
+    : subTable.includes('potion') ? funcStackTable(potion, subTable)
+    : subTable.includes('ammunition') ? funcStackTable(ammunition, subTable)
+    : subTable.includes('dead') ? funcStackTable(dead, subTable)
+    
+    : subTable.includes('trash') ? funcStackTable(x,subTable)
+    : subTable.includes('common') ? funcStackTable(x*.8, subTable)
+    : subTable.includes('rare') ? funcStackTable(x*.6, subTable)
+    : subTable.includes('epic') ? funcStackTable(x*.3, subTable)
+    : subTable.includes('legendary') ? funcStackTable(x*.2, subTable)
+    : subTable.includes('magic') ? funcStackTable(x/10, subTable)
+    : funcStackTable(10, subTable)
+  })};
 
 /**************************Button variables: D20input box (left)**************************/
 const enter20ishLMBTN = document.getElementById('d20ValueGenerateBtn');
@@ -112,212 +138,83 @@ randRollbtn.addEventListener("click",()=>{
 });
 
 /**************************Loot Table Variables: Populate and generate final loot table**************************/
-import{fullLootTable} from './loot-generator-table.js';
 
 const table = document.getElementById('lootResultsTable');  
 const clipboardButton = document.getElementById('copyToClipboard');
 let lootStaging = [];
-let subTables = [
-fullLootTable.uniqueLootTable     //0 
-,fullLootTable.monsterLootTable   //1
-,fullLootTable.animal_loot        //2
-,fullLootTable.human_food_loot    //3
-,fullLootTable.nature_loot        //4
-,fullLootTable.potion_loot        //5
-,fullLootTable.ammunition_loot    //6
-,fullLootTable.dead_loot          //7
 
-,fullLootTable.trash_weapon       //8
-,fullLootTable.trash_armor        //9
-,fullLootTable.trash_treasure     //10
-,fullLootTable.trash_regional     //11
-
-,fullLootTable.common_weapon      //12
-,fullLootTable.common_armor       //13
-,fullLootTable.common_jewelry     //14
-,fullLootTable.common_treasure    //15
-
-,fullLootTable.rare_weapon        //16
-,fullLootTable.rare_armor         //17
-,fullLootTable.rare_jewelry       //18
-,fullLootTable.rare_treasure      //19
-
-,fullLootTable.epic_weapon        //20
-,fullLootTable.epic_armor         //21
-,fullLootTable.epic_jewelry       //22
-,fullLootTable.epic_treasure      //23
-
-,fullLootTable.legendary_armor    //24
-,fullLootTable.legendary_weapons  //25
-,fullLootTable.legendary_jewelry  //26
-,fullLootTable.legendary_treasure //27
-
-,fullLootTable.magic_armor        //28
-,fullLootTable.magic_jewelry      //29
-,fullLootTable.magic_weapon       //30
-,fullLootTable.magic_treasure     //31
-];
 function generateLoot() {
   if (lootLocationModifier <= 1){
-    lootAlgorithm(
-      subTables[0] //unique
-      ,subTables[1] //monster
-      ,subTables[2] //animal
-      ,subTables[3] //human food
-      ,subTables[4] //nature
-      ,subTables[5] //potion 
-      ,subTables[6] //ammunition
-      ,subTables[7] //dead
-      ,subTables[8] //trash
-      ,subTables[9]
-      ,subTables[10]
-      ,subTables[11]
-      ,subTables[12] //common
-      ,subTables[13]
-      ,subTables[14]
-      ,subTables[15]
-      ,subTables[16] //rare
-      ,subTables[17]
-      ,subTables[18]
-      ,subTables[19]
-      ,subTables[20] //epic
-      ,subTables[21]
-      ,subTables[22]
-      ,subTables[23]
-      ,subTables[24] //legendary
-      ,subTables[25]
-      ,subTables[26]
-      ,subTables[27]
-      ,subTables[28] //magic
-      ,subTables[29]
-      ,subTables[30]
-      ,subTables[31]
-    );
+    populateLootTable(
+     /*unique*/ 10
+      , /*monsterLoot*/ 10
+      , /*animal*/ 10
+      , /*humanFood*/ 10
+      , /*nature*/ 10
+      , /*potion*/ 10
+      , /*ammunition*/ 10
+      , /*dead*/ 10
+      , /*x*/ 10);
   } else if (lootLocationModifier = 2){
-    lootAlgorithm(
-      subTables[0] //unique
-      ,subTables[1] //monster
-      ,subTables[2] //animal
-      ,subTables[4] //nature
-      ,subTables[5] //potion 
-      ,subTables[6] //ammunition
-      ,subTables[7] //dead
-      ,subTables[8] //trash
-      ,subTables[9]
-      ,subTables[10]
-      ,subTables[11]
-      ,subTables[12] //common
-      ,subTables[13]
-      ,subTables[14]
-      ,subTables[15]
-      ,subTables[16] //rare
-      ,subTables[17]
-      ,subTables[18]
-      ,subTables[19]
-      ,subTables[20] //epic
-      ,subTables[21]
-      ,subTables[22]
-      ,subTables[23]
-      ,subTables[24] //legendary
-      ,subTables[25]
-      ,subTables[26]
-      ,subTables[27]
-      ,subTables[28] //magic
-      ,subTables[29]
-      ,subTables[30]
-      ,subTables[31]
-    );
-  } else if (lootLocationModifier = 3){
-    lootAlgorithm(
-      subTables[2] //animal
-      ,subTables[4] //nature
-      ,subTables[5] //potion 
-      ,subTables[6] //ammunition
-      ,subTables[12] //common
-      ,subTables[13]
-      ,subTables[14]
-      ,subTables[15]
-      ,subTables[16] //rare
-      ,subTables[17]
-      ,subTables[18]
-      ,subTables[19]
-      ,subTables[20] //epic
-      ,subTables[21]
-      ,subTables[22]
-      ,subTables[23]
-      ,subTables[24] //legendary
-      ,subTables[25]
-      ,subTables[26]
-      ,subTables[27]
-      ,subTables[28] //magic
-      ,subTables[29]
-      ,subTables[30]
-      ,subTables[31]
-    );
-  } else if (lootLocationModifier = 4){
-    lootAlgorithm(
-      subTables[5] //potion 
-      ,subTables[6] //ammunition
-      ,subTables[7] //dead
-      ,subTables[10]
-      ,subTables[14]
-      ,subTables[15]
-      ,subTables[18]
-      ,subTables[19]
-      ,subTables[22]
-      ,subTables[23]
-      ,subTables[26]
-      ,subTables[27]
-      ,subTables[29]
-      ,subTables[31]
-    );
-  } else if (lootLocationModifier = 5){
-    lootAlgorithm(
-      subTables[0] //unique
-      ,subTables[1] //monster
-      ,subTables[2] //animal
-      ,subTables[3] //human food
-      ,subTables[4] //nature
-      ,subTables[5] //potion 
-      ,subTables[6] //ammunition
-      ,subTables[7] //dead
-      ,subTables[8] //trash
-      ,subTables[9]
-      ,subTables[10]
-      ,subTables[11]
-      ,subTables[12] //common
-      ,subTables[13]
-      ,subTables[14]
-      ,subTables[15]
-      ,subTables[16] //rare
-      ,subTables[17]
-      ,subTables[18]
-      ,subTables[19]
-      ,subTables[20] //epic
-      ,subTables[21]
-      ,subTables[22]
-      ,subTables[23]
-      ,subTables[24] //legendary
-      ,subTables[25]
-      ,subTables[26]
-      ,subTables[27]
-      ,subTables[28] //magic
-      ,subTables[29]
-      ,subTables[30]
-      ,subTables[31]
-    );
-  } else if (lootLocationModifier = 6){
-    lootAlgorithm(
-      subTables[3] //human food
-      ,subTables[4] //nature
-      ,subTables[5] //potion 
-    );
-}};
+    populateLootTable(
+      /*unique*/ 10
+       , /*monsterLoot*/ 10
+       , /*animal*/ 10
+       , /*humanFood*/ 10
+       , /*nature*/ 10
+       , /*potion*/ 10
+       , /*ammunition*/ 10
+       , /*dead*/ 10
+       , /*x*/ 10);
+   } else if (lootLocationModifier = 3){
+    populateLootTable(
+      /*unique*/ 10
+       , /*monsterLoot*/ 10
+       , /*animal*/ 10
+       , /*humanFood*/ 10
+       , /*nature*/ 10
+       , /*potion*/ 10
+       , /*ammunition*/ 10
+       , /*dead*/ 10
+       , /*x*/ 10);
+   } else if (lootLocationModifier = 4){
+    populateLootTable(
+      /*unique*/ 10
+       , /*monsterLoot*/ 10
+       , /*animal*/ 10
+       , /*humanFood*/ 10
+       , /*nature*/ 10
+       , /*potion*/ 10
+       , /*ammunition*/ 10
+       , /*dead*/ 10
+       , /*x*/ 10);
+   } else if (lootLocationModifier = 5){
+    populateLootTable(
+      /*unique*/ 10
+       , /*monsterLoot*/ 10
+       , /*animal*/ 10
+       , /*humanFood*/ 10
+       , /*nature*/ 10
+       , /*potion*/ 10
+       , /*ammunition*/ 10
+       , /*dead*/ 10
+       , /*x*/ 10);
+   } else if (lootLocationModifier = 6){
+    populateLootTable(
+      /*unique*/ 10
+       , /*monsterLoot*/ 10
+       , /*animal*/ 10
+       , /*humanFood*/ 10
+       , /*nature*/ 10
+       , /*potion*/ 10
+       , /*ammunition*/ 10
+       , /*dead*/ 10
+       , /*x*/ 10)};
+  lootAlgorithm()};
 
-function lootAlgorithm(...flexSubtables){
+function lootAlgorithm(){
   let tablePop = [];
   itemCount = Math.round(lootStatModifier/10 + (Math.random()*(lootStatModifierBonus/6)))
-  console.log(itemCount)
   table.innerHTML = 
  `<table id="lootResultsTable" class="lootResultsTable">
     <thead>
@@ -330,10 +227,7 @@ function lootAlgorithm(...flexSubtables){
     </tbody>
   </table>`;
 
-  //populate available loot options from provided subtables
-  for(const subtableSelection of flexSubtables){
-    tablePop.push(subtableSelection);
-  };
+
 
   //random item selector algorithm
   if (itemCount === 0){lootStaging.push(['Nothing!', 'Your search yeilds no results..', '0gp'])}
@@ -359,7 +253,7 @@ function lootAlgorithm(...flexSubtables){
   //handling duplicate items
   for(let i = 0; i<lootStaging.length; i++){
 
-    
+
     const newrow = table.insertRow(1); 
     newrow.id = `newrow_${itemCount-i}`
     const cell = [newrow.insertCell(0), newrow.insertCell(1), newrow.insertCell(2)];
@@ -393,6 +287,8 @@ Item ${i}: ${cell[0]},  ${cell[1]}, (${price})`)
     alert("Copied!");
     });
 };
+
+
 
 // Suggestions:
 // remove uniques from the total table every time one is rolled. 
