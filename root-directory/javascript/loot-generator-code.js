@@ -3,7 +3,7 @@ let lootLocationModifier = 0
 let lootStatModifier = 0
 let lootStatModifierBonus = 0
 let itemCount = 0
-import{fullLootTable} from '/loot-generator-table.js'
+import{fullLootTable} from './loot-generator-table.js'
 
 /********************************Location Selector Button Functions*******************/
 
@@ -41,32 +41,6 @@ location[a].addEventListener('click', ()=>{
     if(b===c){continue}
     else{hoverimage[b].classList.remove('lctnSelector_Active_2')}
   }})};
-
-async function populateLootTable(unique, monsterLoot, animal, humanFood, nature, potion, ammunition, dead, x) {
-  let lootPool = [];
-  let lootPoolReMap = [];
-
-  for(const subTable in fullLootTable) lootPool.push(subTable);
-  function funcStackTable(x,y){for(let i = 0; i<x; i++) lootPoolReMap.push(y)};
-
-  lootPool.forEach((subTable)=>{
-    subTable.includes('uniqueLoot') ? funcStackTable(unique,subTable)
-    : subTable.includes('monsterLoot') ? funcStackTable(monsterLoot,subTable)
-    : subTable.includes('animal') ? funcStackTable(animal, subTable)
-    : subTable.includes('human_food') ? funcStackTable(humanFood, subTable)
-    : subTable.includes('nature') ? funcStackTable(nature, subTable)
-    : subTable.includes('potion') ? funcStackTable(potion, subTable)
-    : subTable.includes('ammunition') ? funcStackTable(ammunition, subTable)
-    : subTable.includes('dead') ? funcStackTable(dead, subTable)
-    
-    : subTable.includes('trash') ? funcStackTable(x,subTable)
-    : subTable.includes('common') ? funcStackTable(x*.8, subTable)
-    : subTable.includes('rare') ? funcStackTable(x*.6, subTable)
-    : subTable.includes('epic') ? funcStackTable(x*.3, subTable)
-    : subTable.includes('legendary') ? funcStackTable(x*.2, subTable)
-    : subTable.includes('magic') ? funcStackTable(x/10, subTable)
-    : funcStackTable(10, subTable)
-  })};
 
 /**************************Button variables: D20input box (left)**************************/
 const enter20ishLMBTN = document.getElementById('d20ValueGenerateBtn');
@@ -142,79 +116,36 @@ randRollbtn.addEventListener("click",()=>{
 const table = document.getElementById('lootResultsTable');  
 const clipboardButton = document.getElementById('copyToClipboard');
 let lootStaging = [];
+let lootPoolReMap = [];
+
+async function populateLootTable(unique, monsterLoot, animal, humanFood, nature, potion, ammunition, dead, trash, common, rare, epic, legendary, magic) {
+  let lootPool = [];
+
+  for(const subTable in fullLootTable) lootPool.push(subTable);
+  function funcStackTable(x,y){for(let i = 0; i<x; i++) lootPoolReMap.push(y)};
+
+  lootPool.forEach((subTable)=>{
+    subTable.includes('uniqueLoot') ? funcStackTable(unique,subTable)
+    : subTable.includes('monsterLoot') ? funcStackTable(monsterLoot,subTable)
+    : subTable.includes('animal') ? funcStackTable(animal, subTable)
+    : subTable.includes('human_food') ? funcStackTable(humanFood, subTable)
+    : subTable.includes('nature') ? funcStackTable(nature, subTable)
+    : subTable.includes('potion') ? funcStackTable(potion, subTable)
+    : subTable.includes('ammunition') ? funcStackTable(ammunition, subTable)
+    : subTable.includes('dead') ? funcStackTable(dead, subTable)
+    
+    : subTable.includes('trash') ? funcStackTable(trash,subTable)
+    : subTable.includes('common') ? funcStackTable(common, subTable)
+    : subTable.includes('rare') ? funcStackTable(rare, subTable)
+    : subTable.includes('epic') ? funcStackTable(epic, subTable)
+    : subTable.includes('legendary') ? funcStackTable(legendary, subTable)
+    : subTable.includes('magic') ? funcStackTable(magic, subTable)
+    : funcStackTable(10, subTable)
+  })};
 
 function generateLoot() {
-  if (lootLocationModifier <= 1){
-    populateLootTable(
-     /*unique*/ 10
-      , /*monsterLoot*/ 10
-      , /*animal*/ 10
-      , /*humanFood*/ 10
-      , /*nature*/ 10
-      , /*potion*/ 10
-      , /*ammunition*/ 10
-      , /*dead*/ 10
-      , /*x*/ 10);
-  } else if (lootLocationModifier = 2){
-    populateLootTable(
-      /*unique*/ 10
-       , /*monsterLoot*/ 10
-       , /*animal*/ 10
-       , /*humanFood*/ 10
-       , /*nature*/ 10
-       , /*potion*/ 10
-       , /*ammunition*/ 10
-       , /*dead*/ 10
-       , /*x*/ 10);
-   } else if (lootLocationModifier = 3){
-    populateLootTable(
-      /*unique*/ 10
-       , /*monsterLoot*/ 10
-       , /*animal*/ 10
-       , /*humanFood*/ 10
-       , /*nature*/ 10
-       , /*potion*/ 10
-       , /*ammunition*/ 10
-       , /*dead*/ 10
-       , /*x*/ 10);
-   } else if (lootLocationModifier = 4){
-    populateLootTable(
-      /*unique*/ 10
-       , /*monsterLoot*/ 10
-       , /*animal*/ 10
-       , /*humanFood*/ 10
-       , /*nature*/ 10
-       , /*potion*/ 10
-       , /*ammunition*/ 10
-       , /*dead*/ 10
-       , /*x*/ 10);
-   } else if (lootLocationModifier = 5){
-    populateLootTable(
-      /*unique*/ 10
-       , /*monsterLoot*/ 10
-       , /*animal*/ 10
-       , /*humanFood*/ 10
-       , /*nature*/ 10
-       , /*potion*/ 10
-       , /*ammunition*/ 10
-       , /*dead*/ 10
-       , /*x*/ 10);
-   } else if (lootLocationModifier = 6){
-    populateLootTable(
-      /*unique*/ 10
-       , /*monsterLoot*/ 10
-       , /*animal*/ 10
-       , /*humanFood*/ 10
-       , /*nature*/ 10
-       , /*potion*/ 10
-       , /*ammunition*/ 10
-       , /*dead*/ 10
-       , /*x*/ 10)};
-  lootAlgorithm()};
+  itemCount = Math.round(Math.random()*3)
 
-function lootAlgorithm(){
-  let tablePop = [];
-  itemCount = Math.round(lootStatModifier/10 + (Math.random()*(lootStatModifierBonus/6)))
   table.innerHTML = 
  `<table id="lootResultsTable" class="lootResultsTable">
     <thead>
@@ -227,33 +158,120 @@ function lootAlgorithm(){
     </tbody>
   </table>`;
 
+  if (lootStatModifier === 0){lootStaging.push(['Nothing!', 'Your search yeilds no results..', '0gp'])}
+  else if (lootLocationModifier <= 1){
+    populateLootTable(
+     /*unique*/ 25 - lootStatModifier
+      , /*monsterLoot*/ 25 - lootStatModifier
+      , /*animal*/ 10 - Math.round(lootStatModifier/2)
+      , /*humanFood*/ 10 - Math.round(lootStatModifier/2)
+      , /*nature*/ 10 - Math.round((lootStatModifier/5)*2)
+      , /*potion*/ 10 - Math.round((lootStatModifier/5)*2)
+      , /*ammunition*/ 10 - Math.round((lootStatModifier/5)*2)
+      , /*dead*/ 10 - Math.round(lootStatModifier/2)
+      , /*trash*/ 10 - Math.round(lootStatModifier/2)
+      , /*common*/ 10 - Math.round(((lootStatModifier/5)*2)+1)
+      , /*rare*/ 10 - Math.round(lootStatModifier/5 + lootStatModifier/10)
+      , /*epic*/ Math.round(lootStatModifier/5 + Math.floor(lootStatModifierBonus/7))
+      , /*legendary*/ (lootStatModifier/10 + Math.round(lootStatModifierBonus/6))
+      , /*magic*/ Math.floor(lootStatModifierBonus/4));
+  } else if (lootLocationModifier = 2){
+    populateLootTable(
+     /*unique*/ 25 - lootStatModifier
+     , /*monsterLoot*/ 25 - lootStatModifier
+     , /*animal*/ 10 - Math.round(lootStatModifier/2)
+     , /*humanFood*/ 10 - Math.round(lootStatModifier/2)
+     , /*nature*/ 10 - Math.round((lootStatModifier/5)*2)
+     , /*potion*/ 10 - Math.round((lootStatModifier/5)*2)
+     , /*ammunition*/ 10 - Math.round((lootStatModifier/5)*2)
+     , /*dead*/ 10 - Math.round(lootStatModifier/2)
+     , /*trash*/ 10 - Math.round(lootStatModifier/2)
+     , /*common*/ 10 - Math.round(((lootStatModifier/5)*2)+1)
+     , /*rare*/ 10 - Math.round(lootStatModifier/5 + lootStatModifier/10)
+     , /*epic*/ Math.round(lootStatModifier/5 + Math.floor(lootStatModifierBonus/7))
+     , /*legendary*/ (lootStatModifier/10 + Math.round(lootStatModifierBonus/6))
+     , /*magic*/ Math.floor(lootStatModifierBonus/4));
+  } else if (lootLocationModifier = 3){
+    populateLootTable(
+     /*unique*/ 25 - lootStatModifier
+     , /*monsterLoot*/ 25 - lootStatModifier
+     , /*animal*/ 10 - Math.round(lootStatModifier/2)
+     , /*humanFood*/ 10 - Math.round(lootStatModifier/2)
+     , /*nature*/ 10 - Math.round((lootStatModifier/5)*2)
+     , /*potion*/ 10 - Math.round((lootStatModifier/5)*2)
+     , /*ammunition*/ 10 - Math.round((lootStatModifier/5)*2)
+     , /*dead*/ 10 - Math.round(lootStatModifier/2)
+     , /*trash*/ 10 - Math.round(lootStatModifier/2)
+     , /*common*/ 10 - Math.round(((lootStatModifier/5)*2)+1)
+     , /*rare*/ 10 - Math.round(lootStatModifier/5 + lootStatModifier/10)
+     , /*epic*/ Math.round(lootStatModifier/5 + Math.floor(lootStatModifierBonus/7))
+     , /*legendary*/ (lootStatModifier/10 + Math.round(lootStatModifierBonus/6))
+     , /*magic*/ Math.floor(lootStatModifierBonus/4));
+  } else if (lootLocationModifier = 4){
+    populateLootTable(
+     /*unique*/ 25 - lootStatModifier
+     , /*monsterLoot*/ 25 - lootStatModifier
+     , /*animal*/ 10 - Math.round(lootStatModifier/2)
+     , /*humanFood*/ 10 - Math.round(lootStatModifier/2)
+     , /*nature*/ 10 - Math.round((lootStatModifier/5)*2)
+     , /*potion*/ 10 - Math.round((lootStatModifier/5)*2)
+     , /*ammunition*/ 10 - Math.round((lootStatModifier/5)*2)
+     , /*dead*/ 10 - Math.round(lootStatModifier/2)
+     , /*trash*/ 10 - Math.round(lootStatModifier/2)
+     , /*common*/ 10 - Math.round(((lootStatModifier/5)*2)+1)
+     , /*rare*/ 10 - Math.round(lootStatModifier/5 + lootStatModifier/10)
+     , /*epic*/ Math.round(lootStatModifier/5 + Math.floor(lootStatModifierBonus/7))
+     , /*legendary*/ (lootStatModifier/10 + Math.round(lootStatModifierBonus/6))
+     , /*magic*/ Math.floor(lootStatModifierBonus/4));
+  } else if (lootLocationModifier = 5){
+    populateLootTable(
+     /*unique*/ 25 - lootStatModifier
+     , /*monsterLoot*/ 25 - lootStatModifier
+     , /*animal*/ 10 - Math.round(lootStatModifier/2)
+     , /*humanFood*/ 10 - Math.round(lootStatModifier/2)
+     , /*nature*/ 10 - Math.round((lootStatModifier/5)*2)
+     , /*potion*/ 10 - Math.round((lootStatModifier/5)*2)
+     , /*ammunition*/ 10 - Math.round((lootStatModifier/5)*2)
+     , /*dead*/ 10 - Math.round(lootStatModifier/2)
+     , /*trash*/ 10 - Math.round(lootStatModifier/2)
+     , /*common*/ 10 - Math.round(((lootStatModifier/5)*2)+1)
+     , /*rare*/ 10 - Math.round(lootStatModifier/5 + lootStatModifier/10)
+     , /*epic*/ Math.round(lootStatModifier/5 + Math.floor(lootStatModifierBonus/7))
+     , /*legendary*/ (lootStatModifier/10 + Math.round(lootStatModifierBonus/6))
+     , /*magic*/ Math.floor(lootStatModifierBonus/4));
+  } else if (lootLocationModifier = 6){
+    populateLootTable(
+     /*unique*/ 25 - lootStatModifier
+     , /*monsterLoot*/ 25 - lootStatModifier
+     , /*animal*/ 10 - Math.round(lootStatModifier/2)
+     , /*humanFood*/ 10 - Math.round(lootStatModifier/2)
+     , /*nature*/ 10 - Math.round((lootStatModifier/5)*2)
+     , /*potion*/ 10 - Math.round((lootStatModifier/5)*2)
+     , /*ammunition*/ 10 - Math.round((lootStatModifier/5)*2)
+     , /*dead*/ 10 - Math.round(lootStatModifier/2)
+     , /*trash*/ 10 - Math.round(lootStatModifier/2)
+     , /*common*/ 10 - Math.round(((lootStatModifier/5)*2)+1)
+     , /*rare*/ 10 - Math.round(lootStatModifier/5 + lootStatModifier/10)
+     , /*epic*/ Math.round(lootStatModifier/5 + Math.floor(lootStatModifierBonus/7))
+     , /*legendary*/ (lootStatModifier/10 + Math.round(lootStatModifierBonus/6))
+     , /*magic*/ Math.floor(lootStatModifierBonus/4));
+};
 
+console.log(lootPoolReMap);
+       const poolNum = lootPoolReMap.length; 
+       const randomPoolSelect = Math.round(Math.random() * (poolNum));
+       const randomItemSelect = Math.round(Math.random()*(lootPoolReMap[randomPoolSelect].length-1));
+       console.log(poolNum, randomPoolSelect, randomItemSelect)
 
-  //random item selector algorithm
-  if (itemCount === 0){lootStaging.push(['Nothing!', 'Your search yeilds no results..', '0gp'])}
-  else{
-    for(let i=0; i < itemCount; i++){
-      const poolNum = flexSubtables.length;
-      const poolMax = math.round(poolNum * 
-        (((lootStatModifier)+ //1-20
-        (Math.floor(lootStatModifierBonus/7)*10)) //0-10
-        /30)
-      );
-      const randomPoolSelect = Math.round(Math.random() * (poolMax));
-      const randomItemSelect = Math.round(Math.random()*(tablePop[randomPoolSelect].length-1));
-
-      const lootName= tablePop[randomPoolSelect][randomItemSelect].name
-      const lootDescription = tablePop[randomPoolSelect][randomItemSelect].description
-      const lootValue = tablePop[randomPoolSelect][randomItemSelect].value
-      
-      lootStaging.push([lootName, lootDescription, lootValue]);
-  };}
-  console.log(lootStaging)
+       const lootName= lootPoolReMap[randomPoolSelect][randomItemSelect].name
+       const lootDescription = lootPoolReMap[randomPoolSelect][randomItemSelect].description
+       const lootValue = lootPoolReMap[randomPoolSelect][randomItemSelect].value
+       
+       lootStaging.push([lootName, lootDescription, lootValue]);
+       console.log(lootStaging)
 
   //handling duplicate items
   for(let i = 0; i<lootStaging.length; i++){
-
-
     const newrow = table.insertRow(1); 
     newrow.id = `newrow_${itemCount-i}`
     const cell = [newrow.insertCell(0), newrow.insertCell(1), newrow.insertCell(2)];
@@ -287,7 +305,6 @@ Item ${i}: ${cell[0]},  ${cell[1]}, (${price})`)
     alert("Copied!");
     });
 };
-
 
 
 // Suggestions:
